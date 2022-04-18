@@ -8,20 +8,12 @@ generator client {
 }
 
 model User {
-  id             String     @id @default(cuid())
-  email          String     @unique
-  username       String     @unique
-  displayName    String
-  avatarUrl      String
-  bio            String
-  createdAt      DateTime   @default(now())
-  updatedAt      DateTime   @updatedAt
-  status         Boolean    @default(true)
-  password       Password?
-  posts          Post[]
-  topicsFollowed Topic[]
-  bookmarks      Bookmark[]
-  Comment        Comment[]
+  id       String    @id @default(cuid())
+  email    String    @unique
+  username String    @unique
+  status   Boolean   @default(true)
+  profile  Profile?
+  Password Password?
 }
 
 model Password {
@@ -30,20 +22,37 @@ model Password {
   userId String @unique
 }
 
+model Profile {
+  id             String     @id @default(cuid())
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId         String     @unique
+  displayName    String
+  avatarUrl      String
+  bio            String
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  posts          Post[]
+  topicsFollowed Topic[]
+  bookmarks      Bookmark[]
+  comments       Comment[]
+  likes          Like[]
+}
+
 model Topic {
-  id          String @id
+  id          String    @id
   label       String
-  description String @default("")
+  description String    @default("")
   posts       Post[]
-  users       User[]
+  profiles    Profile[]
 }
 
 model Bookmark {
-  id     String  @id
-  Post   Post?   @relation(fields: [userId], references: [id])
-  postId String
-  User   User?   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId String?
+  id        String   @id
+  Post      Post?    @relation(fields: [postId], references: [id])
+  postId    String
+  Profile   Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  profileId String?
+  createdAt DateTime @default(now())
 }
 
 model Post {
@@ -53,21 +62,33 @@ model Post {
   content     String
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
-  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId      String
+  profile     Profile    @relation(fields: [profileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  profileId   String
   topics      Topic[]
   Bookmark    Bookmark[]
-  totalView   String
+  viewCount   String     @default("0")
   Comment     Comment[]
+  likes       Like[]
+}
+
+model Like {
+  id        String   @id @default(cuid())
+  Post      Post?    @relation(fields: [postId], references: [id])
+  postId    String?
+  Comment   Comment? @relation(fields: [commentId], references: [id])
+  commentId String?
+  Profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId String?
 }
 
 model Comment {
   id        String   @id @default(cuid())
   Post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   postId    String
-  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId    String
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  profileId String
   content   String
+  likes     Like[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
