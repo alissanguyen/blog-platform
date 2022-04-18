@@ -105,6 +105,21 @@ module.exports = {
         popover: "var(--z-popover)",
         maximum: "var(--z-maximum)",
       },
+      animation: {
+        ripple: "ripple 0.6s linear",
+      },
+      keyframes: {
+        ripple: {
+          "0%": {
+            transform: "scale(0)",
+            opacity: "0.4",
+          },
+          "100%": {
+            transform: "scale(3)",
+            opacity: "0",
+          },
+        },
+      },
     },
   },
   plugins: [
