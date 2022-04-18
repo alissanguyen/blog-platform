@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer utilities {
+    .bg-primary {
+        @apply bg-white dark:bg-gray-900;
+    }
+  
+    .bg-secondary {
+        @apply bg-gray-100 dark:bg-gray-800;
+      }
+
+      .text-primary {
+        @apply text-black dark:text-white;
+      }
+    
+      .text-secondary {
+        @apply text-gray-500 dark:text-blueGray-500;
+      }
+}
+
+:root {
+    /* APP PALETTE */
+    --color-1: #21647e;
+    --color-2: #288fa5;
+    --color-3: #25b4b8;
+    --color-4: #94D2BD;
+    --color-5: #E9D8A6;
+    --color-6: #EE9B00;
+    --color-7: #FD691F;
+    --color-8: #FD4614;
+    --color-9: #EC3228;
+    --color-10: #DA3639;
+
+    /* NEUTRAL */
+    --neutral-100: #f8f9fa;
+    --neutral-200: #e9ecef;
+    --neutral-300: #dee2e6;
+    --neutral-400: #ced4da;
+    --neutral-500: #adb5bd;
+    --neutral-600: #6c757d;
+    --neutral-700: #495057;
+    --neutral-800: #343a40;
+    --neutral-900: #212529;
+
+    /* RED */
+    --red-100: #ffd5d5;
+    --red-200: #ffb9b9;
+    --red-300: #ff9e9c;
+    --red-400: #ff8785;
+    --red-500: #ff625f;
+    --red-600: #ff0a06;
+    --red-700: #db0400;
+    --red-800: #b60300;
+    --red-900: #8b0000;
+
+    /* YELLOW */
+    --yellow-100: #fff6cc;
+    --yellow-200: #fff2b2;
+    --yellow-300: #ffee99;
+    --yellow-400: #ffe97f;
+    --yellow-500: #ffe566;
+    --yellow-600: #ffe14c;
+    --yellow-700: #ffdd32;
+    --yellow-800: #ffd819;
+    --yellow-900: #ffd400;
+
+    /* GREEN */
+    --green-100: #E1F2DC;
+    --green-200: #C0E8C0;
+    --green-300: #9FDEA3;
+    --green-400: #7FD286;
+    --green-500: #5EC869;
+    --green-600: #3BC048;
+    --green-700: #30A03D;
+    --green-800: #258031;
+    --green-900: #136725;
+
+    /* BLUE */
+    --blue-100: #CDE8FF;
+    --blue-200: #B6DCFF;
+    --blue-300: #9BD0FF;
+    --blue-400: #57AEFF;
+    --blue-500: #138DFF;
+    --blue-600: #0177FF;
+    --blue-700: #005BE5;
+    --blue-800: #0031B7;
+    --blue-900: #000081;
+}

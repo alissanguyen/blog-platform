@@ -39,61 +39,12 @@
 }
 
 :root {
-  --neutral-100: #f8f9fa;
-  --neutral-200: #e9ecef;
-  --neutral-300: #dee2e6;
-  --neutral-400: #ced4da;
-  --neutral-500: #adb5bd;
-  --neutral-600: #6c757d;
-  --neutral-700: #495057;
-  --neutral-800: #343a40;
-  --neutral-900: #212529;
-
-  --blue-100: #d1e6f6;
-  --blue-200: #b8d8f2;
-  --blue-300: #a0cbec;
-  --blue-400: #62a8e0;
-  --blue-500: #2485d2;
-  --blue-600: #1e6fc0;
-  --blue-700: #1758ad;
-  --blue-800: #0e2e7f;
-  --blue-900: #030351;
-
-  --green-100: #dbf3de;
-  --green-200: #bae8c9;
-  --green-300: #9cdeb7;
-  --green-400: #79d19f;
-  --green-500: #5bc88e;
-  --green-600: #3db675;
-  --green-700: #30935e;
-  --green-800: #236f48;
-  --green-900: #115538;
-
-  --red-100: #ffd5d5;
-  --red-200: #ffb9b9;
-  --red-300: #ff9e9c;
-  --red-400: #ff8785;
-  --red-500: #ff625f;
-  --red-600: #ff0a06;
-  --red-700: #db0400;
-  --red-800: #b60300;
-  --red-900: #8b0000;
-
-  --yellow-100: #fff6cc;
-  --yellow-200: #fff2b2;
-  --yellow-300: #ffee99;
-  --yellow-400: #ffe97f;
-  --yellow-500: #ffe566;
-  --yellow-600: #ffe14c;
-  --yellow-700: #ffdd32;
-  --yellow-800: #ffd819;
-  --yellow-900: #ffd400;
-
+  /* FONT CONFIG */
   --ratio: 1.25;
-
   --lh-tight: 1.25;
   --lh-base: 1.4;
 
+  /* FONT SIZES */
   --fs-display: calc(51px / var(--ratio));
   --fs-headline-1: calc(46px / var(--ratio));
   --fs-headline-2: calc(41px / var(--ratio));
@@ -109,14 +60,17 @@
   --fs-caption: calc(12px / var(--ratio));
   --fs-tiny: calc(11px / var(--ratio));
 
+  /* FONT WEIGHTS */
   --fw-light: 300;
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
 
+  /* FONT FACE */
   --ff-hind: "Hind", sans-serif;
 
+  /* Z-INDEXES */
   --z-negative: -1;
   --z-elevate: 1;
   --z-sticky: 100;
@@ -145,3 +99,4 @@ body {
     --ratio: 1;
   }
 }
+

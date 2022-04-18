@@ -1,22 +1,32 @@
 module.exports = {
   content: ["./app/**/*.{ts,tsx,jsx,js}"],
+  darkMode: 'class',
   theme: {
     fontFamily: {
       hind: "var(--ff-hind)",
     },
+    screens: {
+      xxs: "380px",
+      xs: "440px",
+      sm: "575px",
+      md: '768px',
+      lg: '990px',
+      xl: "1200px",
+      "2xl": '1420px', // this is the "design resolution"
+    },
     fontSize: {
       display: "var(--fs-display)",
-      "headline-1": "var(--fs-headline-1)",
-      "headline-2": "var(--fs-headline-2)",
-      "headline-3": "var(--fs-headline-3)",
-      "headline-4": "var(--fs-headline-4)",
-      "headline-5": "var(--fs-headline-5)",
-      "headline-6": "var(--fs-headline-6)",
+      "h1": "var(--fs-headline-1)",
+      "h2": "var(--fs-headline-2)",
+      "h3": "var(--fs-headline-3)",
+      "h4": "var(--fs-headline-4)",
+      "h5": "var(--fs-headline-5)",
+      "h6": "var(--fs-headline-6)",
       "lead-1": "var(--fs-lead-1)",
       "lead-2": "var(--fs-lead-2)",
-      "body-lg": "var(--fs-body-lg)",
-      "body-md": "var(--fs-body-md)",
-      "body-sm": "var(--fs-body-sm)",
+      "bodyLg": "var(--fs-body-lg)",
+      "bodyMd": "var(--fs-body-md)",
+      "bodySm": "var(--fs-body-sm)",
       caption: "var(--fs-caption)",
       tiny: "var(--fs-tiny)",
     },
@@ -29,6 +39,10 @@ module.exports = {
     },
     extend: {
       colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        white: 'var(--color-white)',
+        black: 'var(--color-black)',
         neutral: {
           100: "var(--neutral-100)",
           200: "var(--neutral-200)",
@@ -98,6 +112,15 @@ module.exports = {
         modal: "var(--z-modal)",
         popover: "var(--z-popover)",
         maximum: "var(--z-maximum)",
+      },
+      fontSize: {
+        xl: '1.375rem', // 22px
+        '2xl': '1.5625rem', // 25px
+        '3xl': '1.875rem', // 30px
+        '4xl': '2.5rem', // 40px
+        '5xl': '3.125rem', // 50px
+        '6xl': '3.75rem', // 60px
+        '7xl': '4.375rem', // 70px
       },
     },
   },

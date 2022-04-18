@@ -13,16 +13,18 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import globalStylesheetUrl from "./styles/global.css";
-import tailwindStylesheetUrl from "./styles/tailwind.css";
+import globalStyles from "./styles/global.css";
+import tailwind from "./styles/tailwind.css";
+import tailwindCustom from "./styles/tailwindcustom.css"
 import { getUser } from "./session.server";
 import NavBar, { links as NavBarStyles } from "./components/NavBar/NavBar";
 import Footer, { links as FooterStyles } from "./components/Footer/Footer";
 
 export const links: LinksFunction = () => {
   return [
-    { rel: "stylesheet", href: globalStylesheetUrl },
-    { rel: "stylesheet", href: tailwindStylesheetUrl },
+    { rel: "stylesheet", href: globalStyles },
+    { rel: "stylesheet", href: tailwind },
+    { rel: "stylesheet", href: tailwindCustom },
     ...NavBarStyles(),
     ...FooterStyles(),
   ];
