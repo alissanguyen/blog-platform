@@ -8,31 +8,66 @@ generator client {
 }
 
 model User {
-  id    String @id @default(cuid())
-  email String @unique
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  password Password?
-  notes    Note[]
+  id             String     @id @default(cuid())
+  email          String     @unique
+  username       String     @unique
+  displayName    String
+  avatarUrl      String
+  bio            String
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  status         Boolean    @default(true)
+  password       Password?
+  posts          Post[]
+  topicsFollowed Topic[]
+  bookmarks      Bookmark[]
+  Comment        Comment[]
 }
 
 model Password {
-  hash String
-
+  hash   String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId String @unique
 }
 
-model Note {
-  id    String @id @default(cuid())
-  title String
-  body  String
+model Topic {
+  id          String @id
+  label       String
+  description String @default("")
+  posts       Post[]
+  users       User[]
+}
 
+model Bookmark {
+  id     String  @id
+  Post   Post?   @relation(fields: [userId], references: [id])
+  postId String
+  User   User?   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId String?
+}
+
+model Post {
+  id          String     @id @default(cuid())
+  splashImage String
+  title       String
+  content     String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId      String
+  topics      Topic[]
+  Bookmark    Bookmark[]
+  totalView   String
+  Comment     Comment[]
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  Post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  postId    String
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId    String
+  content   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId String
 }
