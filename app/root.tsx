@@ -13,6 +13,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import globalStylesheetUrl from "./styles/global.css";
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import { getUser } from "./session.server";
 import NavBar, { links as NavBarStyles } from "./components/NavBar/NavBar";
@@ -20,6 +21,7 @@ import Footer, { links as FooterStyles } from "./components/Footer/Footer";
 
 export const links: LinksFunction = () => {
   return [
+    { rel: "stylesheet", href: globalStylesheetUrl },
     { rel: "stylesheet", href: tailwindStylesheetUrl },
     ...NavBarStyles(),
     ...FooterStyles(),

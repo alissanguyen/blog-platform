@@ -13,7 +13,7 @@ model User {
   username String    @unique
   status   Boolean   @default(true)
   profile  Profile?
-  Password Password?
+  password Password?
 }
 
 model Password {
@@ -47,12 +47,12 @@ model Topic {
 }
 
 model Bookmark {
-  id        String   @id
-  Post      Post?    @relation(fields: [postId], references: [id])
-  postId    String
-  Profile   Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  profileId String?
-  createdAt DateTime @default(now())
+  id          String   @id
+  post        Post?    @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  postId      String
+  profile     Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  profileId   String?
+  createdAt   DateTime @default(now())
 }
 
 model Post {
@@ -65,30 +65,51 @@ model Post {
   profile     Profile    @relation(fields: [profileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   profileId   String
   topics      Topic[]
-  Bookmark    Bookmark[]
-  viewCount   String     @default("0")
-  Comment     Comment[]
+  bookmarks   Bookmark[]
+  viewCount   Int        @default(0)
+  comments    Comment[]
   likes       Like[]
 }
 
 model Like {
-  id        String   @id @default(cuid())
-  Post      Post?    @relation(fields: [postId], references: [id])
-  postId    String?
-  Comment   Comment? @relation(fields: [commentId], references: [id])
-  commentId String?
-  Profile   Profile? @relation(fields: [profileId], references: [id])
-  profileId String?
+  id          String   @id
+  post        Post?    @relation(fields: [postId], references: [id])
+  postId      String?
+  comment     Comment? @relation(fields: [commentId], references: [id])
+  commentId   String?
+  profile     Profile? @relation(fields: [profileId], references: [id])
+  profileId   String?
+  createdAt   DateTime @default(now())
 }
 
 model Comment {
-  id        String   @id @default(cuid())
-  Post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  postId    String
-  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  profileId String
-  content   String
-  likes     Like[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String   @id
+  post        Post     @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  postId      String
+  referenceId String
+  profile     Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  profileId   String
+  content     String
+  depth       Int      @default(0)
+  likes       Like[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Follower {
+  id              String   @id
+  follower        Profile  @relation(fields: [followerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  followerId      String
+  followedUser    Profile  @relation(fields: [followedUserId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  followedUserId  String
+  createdAt       DateTime @default(now())
+}
+
+model Following {
+  id              String   @id
+  follower        Profile  @relation(fields: [followerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  followerId      String
+  followedUser    Profile  @relation(fields: [followedUserId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  followedUserId  String
+  createdAt       DateTime @default(now())
 }
