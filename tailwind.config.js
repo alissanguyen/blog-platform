@@ -85,6 +85,12 @@ module.exports = {
           900: "var(--yellow-900)",
         },
       },
+      width: {
+        checkbox: "var(--checkbox-size)",
+      },
+      height: {
+        checkbox: "var(--checkbox-size)",
+      },
       lineHeight: {
         tight: "var(--lh-tight)",
         base: "var(--lh-base)",
