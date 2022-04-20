@@ -15,6 +15,7 @@ type TCheckboxProps = {
   labelPlacement?: TLabelPlacement;
   size?: number;
   className?: string;
+  containerClassName?: string;
   disabled?: boolean;
   checked: boolean;
   onChange: () => void;
@@ -42,6 +43,7 @@ const Checkbox = ({
   labelPlacement = "end",
   size = 16,
   className,
+  containerClassName,
   disabled = false,
   checked,
   onChange,
@@ -66,9 +68,10 @@ const Checkbox = ({
   return (
     <label
       className={clsx(
-        "text-sm inline-flex select-none items-center gap-2",
+        "text-sm inline-flex select-none items-center gap-3",
         labelPlacementStyles[labelPlacement],
-        disabled ? "cursor-not-allowed" : "cursor-pointer"
+        disabled ? "cursor-not-allowed" : "cursor-pointer",
+        containerClassName
       )}
       style={{
         ["--checkbox-size" as any]: `${size}px`,

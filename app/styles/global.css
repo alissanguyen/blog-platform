@@ -42,6 +42,10 @@
   --z-modal: 500;
   --z-popover: 500;
   --z-maximum: 9999;
+
+  --scrollbar-width: 12px;
+  --scrollbar-100: #ced4da;
+  --scrollbar-200: #adb5bd;
 }
 
 * {
@@ -56,6 +60,25 @@ body {
   font-size: var(--fs-body-md);
   line-height: var(--lh-base);
   background: var(--bg-color);
+}
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-100);
+  border-radius: 12px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-200);
 }
 
 @media screen and (min-width: 968px) {
