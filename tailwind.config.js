@@ -109,6 +109,12 @@ module.exports = {
           900: "var(--yellow-900)",
         },
       },
+      width: {
+        checkbox: "var(--checkbox-size)",
+      },
+      height: {
+        checkbox: "var(--checkbox-size)",
+      },
       lineHeight: {
         tight: "var(--lh-tight)",
         base: "var(--lh-base)",
@@ -131,6 +137,20 @@ module.exports = {
         '5xl': '3.125rem', // 50px
         '6xl': '3.75rem', // 60px
         '7xl': '4.375rem', // 70px
+      animation: {
+        ripple: "ripple 0.6s linear",
+      },
+      keyframes: {
+        ripple: {
+          "0%": {
+            transform: "scale(0)",
+            opacity: "0.4",
+          },
+          "100%": {
+            transform: "scale(3)",
+            opacity: "0",
+          },
+        },
       },
     },
   },
@@ -138,4 +158,4 @@ module.exports = {
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/typography"),
   ],
-};
+}}
