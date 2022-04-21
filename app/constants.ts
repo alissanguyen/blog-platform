@@ -1,5 +1,7 @@
 export const defaultLayoutClassname = "max-w-screen-2xl m-auto px-10 2xl:px-0"
-export const fixedWidthContentClassname = "max-w-screen-lg m-auto"
+export const fixedWidthContentClassname = "max-w-screen-xl m-auto"
+
+export const THEME_COOKIE_KEY = "blog_theme";
 
 export const footerLinks = [
     {
@@ -82,3 +84,4 @@ export const leftNavigationMenuLinks = [
     //     link: "/write",
     // },
 ]
+
