@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-@layer utilities {
+/* TODO: Fix this not being applied */
+@layer components {
     .bg-primary {
         @apply bg-white dark:bg-gray-900;
     }
@@ -19,6 +18,10 @@
     
       .text-secondary {
         @apply text-gray-500 dark:text-blueGray-500;
+      }
+    
+      .button-primary {
+        @apply bg-five hover:bg-six px-3 py-2
       }
 }
 

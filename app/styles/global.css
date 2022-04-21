@@ -1,42 +1,4 @@
-@font-face {
-  font-family: "Hind";
-  src: url("../../public/fonts/hind/Hind-Light.ttf");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hind";
-  src: url("../../public/fonts/hind/Hind-Regular.ttf");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hind";
-  src: url("../../public/fonts/hind/Hind-Medium.ttf");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hind";
-  src: url("../../public/fonts/hind/Hind-SemiBold.ttf");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hind";
-  src: url("../../public/fonts/hind/Hind-Bold.ttf");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 
 :root {
   /* FONT CONFIG */
@@ -100,3 +62,7 @@ body {
   }
 }
 
+.HomePage {
+  background-image: url("/assets/gradient2.png");
+  background-size: cover;
+}
