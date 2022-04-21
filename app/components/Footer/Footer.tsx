@@ -1,6 +1,5 @@
 import type { LinksFunction } from "@remix-run/server-runtime";
 import * as React from "react";
-import { Option, Select } from "../Select";
 import styles from "./Footer.css";
 
 export const links: LinksFunction = () => {

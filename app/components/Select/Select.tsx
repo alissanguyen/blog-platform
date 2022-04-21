@@ -10,6 +10,9 @@ type TSelectProps = {
   children: ReactChild[] | ReactChildren[];
   defaultValue?: string;
   label?: string;
+  placeholder?: string;
+  description?: string;
+  error?: string;
   maxHeight?: number;
   searchable?: boolean;
   multiselect?: boolean;
@@ -28,7 +31,10 @@ type TOptionProps = {
 export const Select = ({
   children,
   defaultValue = "",
-  label = "Select option",
+  label,
+  placeholder = "Select option",
+  description,
+  error,
   maxHeight = 250,
   searchable = false,
   multiselect = false,
@@ -43,14 +49,8 @@ export const Select = ({
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const ref = useRef(null);
-  const defaultClassName = "cursor-pointer border ring-1 rounded";
-  const allClassNames = clsx(
-    defaultClassName,
-    open
-      ? "border-blue-500 ring-blue-500"
-      : "border-neutral-500 ring-transparent",
-    className
-  );
+  const defaultClassName = "flex flex-col items-stretch";
+  const allClassNames = clsx(defaultClassName, className);
   const childSelected = (children as any).find(
     ({ props: { value } }: any) => value === optionSelected
   );
@@ -99,142 +99,152 @@ export const Select = ({
     setSearchTerm(event.target.value);
   };
 
-  console.log(open || optionSelected || multipleOptionsSelected.length);
-
   return (
-    <div className="relative" ref={ref}>
-      <div className={allClassNames} tabIndex={0} onFocus={() => setOpen(true)}>
-        {searchable ? (
-          <div className="relative flex items-center">
-            <span
-              className={clsx(
-                "absolute left-3.5 bg-white px-1 text-neutral-600 transition-all duration-150",
-                (open || optionSelected || multipleOptionsSelected.length) &&
-                  "text-caption text-neutral-800"
+    <div className={allClassNames} ref={ref}>
+      <div
+        className="mb-1 text-body-sm font-semibold"
+        onClick={() => setOpen(true)}
+      >
+        {label}
+      </div>
+      <div className="relative">
+        <div
+          className={clsx(
+            "cursor-pointer rounded-lg border outline-none ring-4",
+            error
+              ? open
+                ? "border-red-700 ring-red-100"
+                : "border-red-700 ring-transparent"
+              : open
+              ? "border-primary-300 ring-primary-100"
+              : "border-neutral-400 ring-transparent"
+          )}
+          tabIndex={0}
+          onFocus={() => setOpen(true)}
+          onClick={() => setOpen(true)}
+        >
+          {searchable ? (
+            <div className="relative flex items-center">
+              {!searchTerm && (
+                <span className="absolute left-3.5 line-clamp-1">
+                  {multiselect ? (
+                    multipleOptionsSelected.length ? (
+                      `${multipleOptionsSelected.length} item${
+                        multipleOptionsSelected.length > 1 ? "s" : ""
+                      } selected`
+                    ) : (
+                      <span className="text-neutral-600">{placeholder}</span>
+                    )
+                  ) : childSelected ? (
+                    childSelected.props.children
+                  ) : (
+                    <span className="text-neutral-600">{placeholder}</span>
+                  )}
+                </span>
               )}
-              style={
-                open || optionSelected || multipleOptionsSelected.length
-                  ? {
-                      transform: `translate(-4px, -${
-                        (ref.current as any).offsetHeight / 2 - 2
-                      }px)`,
-                    }
-                  : {}
-              }
-            >
-              {label}
-            </span>
-            {!searchTerm && (
-              <span className="absolute left-3.5 line-clamp-1">
-                {childSelected && childSelected.props.children}
-                {multiselect && multipleOptionsSelected.length
-                  ? `${multipleOptionsSelected.length} item${
+              <input
+                type="text"
+                className="w-full rounded-lg border-none py-2 pl-3.5 pr-7 outline-none"
+                onChange={handleSearchOptions}
+                value={searchTerm}
+              />
+              <span
+                className={clsx(
+                  "pointer-events-none absolute right-2 top-1/2 -translate-y-1/2",
+                  error && "text-red-700"
+                )}
+              >
+                {open ? <MagnifyingGlass size={16} /> : <CaretDown size={16} />}
+              </span>
+            </div>
+          ) : (
+            <div className="flex items-center py-2 pl-3.5 pr-2">
+              <span className="pointer-events-none line-clamp-1">
+                {multiselect ? (
+                  multipleOptionsSelected.length ? (
+                    `${multipleOptionsSelected.length} item${
                       multipleOptionsSelected.length > 1 ? "s" : ""
                     } selected`
-                  : null}
-              </span>
-            )}
-            <input
-              type="text"
-              className="w-full rounded border-none py-2 pl-3.5 pr-7 outline-none"
-              onChange={handleSearchOptions}
-              value={searchTerm}
-            />
-            <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2">
-              {open ? <MagnifyingGlass size={16} /> : <CaretDown size={16} />}
-            </span>
-          </div>
-        ) : (
-          <div className="flex items-center py-2 pl-3.5 pr-2">
-            <span
-              className={clsx(
-                "bg-white px-1 text-neutral-600 transition-all duration-150",
-                (open || optionSelected || multipleOptionsSelected.length) &&
-                  "absolute text-caption text-neutral-800"
-              )}
-              style={
-                open || optionSelected || multipleOptionsSelected.length
-                  ? {
-                      transform: `translate(-4px, -${
-                        (ref.current as any).offsetHeight / 2 - 2
-                      }px)`,
-                    }
-                  : {}
-              }
-            >
-              {label}
-            </span>
-            <span className="line-clamp-1">
-              {childSelected && childSelected.props.children}
-              {multiselect && multipleOptionsSelected.length
-                ? `${multipleOptionsSelected.length} item${
-                    multipleOptionsSelected.length > 1 ? "s" : ""
-                  } selected`
-                : null}
-            </span>
-            <span className="pointer-events-none invisible w-px select-none whitespace-nowrap opacity-0">
-              {label}
-            </span>
-            <span
-              className={clsx(
-                "ml-auto inline-block pl-1 transition-transform duration-200",
-                open && "rotate-x-180"
-              )}
-            >
-              <CaretDown size={16} />
-            </span>
-          </div>
-        )}
-      </div>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: 0.2,
-            }}
-            className="absolute top-full z-dropdown mt-1.5 flex w-full flex-col items-stretch rounded-md border border-neutral-300 bg-white shadow-md"
-          >
-            <div>
-              <ul
-                className="overflow-auto"
-                style={{ maxHeight: `${maxHeight}px` }}
-              >
-                {options.map(({ props: { value, children } }: any) => {
-                  const selected = multiselect
-                    ? multipleOptionsSelected.some((option) => option === value)
-                    : value === optionSelected;
-
-                  return (
-                    <Option
-                      key={value}
-                      value={value}
-                      selected={selected}
-                      multiselect={multiselect}
-                      onChange={handleChange}
-                    >
-                      {children}
-                    </Option>
-                  );
-                })}
-                {notFound && (
-                  <li className="flex flex-col items-center px-3.5 py-2">
-                    <img
-                      src={NoSearchResult}
-                      className="-mb-2 -mt-3"
-                      width={90}
-                      alt="no search result"
-                    />
-                    <p>No option found</p>
-                  </li>
+                  ) : (
+                    <span className="text-neutral-600">{placeholder}</span>
+                  )
+                ) : childSelected ? (
+                  childSelected.props.children
+                ) : (
+                  <span className="text-neutral-600">{placeholder}</span>
                 )}
-              </ul>
+              </span>
+              <span className="pointer-events-none invisible w-px select-none whitespace-nowrap opacity-0">
+                {label}
+              </span>
+              <span
+                className={clsx(
+                  "ml-auto inline-block pl-1 transition-transform duration-200",
+                  open && "rotate-x-180",
+                  error && "text-red-700"
+                )}
+              >
+                <CaretDown size={16} />
+              </span>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </div>
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                duration: 0.2,
+              }}
+              className="absolute top-full z-dropdown mt-1.5 flex w-full flex-col items-stretch rounded-md border border-neutral-300 bg-white shadow-md"
+            >
+              <div>
+                <ul
+                  className="overflow-auto"
+                  style={{ maxHeight: `${maxHeight}px` }}
+                >
+                  {options.map(({ props: { value, children } }: any) => {
+                    const selected = multiselect
+                      ? multipleOptionsSelected.some(
+                          (option) => option === value
+                        )
+                      : value === optionSelected;
+
+                    return (
+                      <Option
+                        key={value}
+                        value={value}
+                        selected={selected}
+                        multiselect={multiselect}
+                        onChange={handleChange}
+                      >
+                        {children}
+                      </Option>
+                    );
+                  })}
+                  {notFound && (
+                    <li className="flex flex-col items-center px-3.5 py-2">
+                      <img
+                        src={NoSearchResult}
+                        className="-mb-2 -mt-3"
+                        width={90}
+                        alt="no search result"
+                      />
+                      <p>No option found</p>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+      {description && (
+        <p className="mt-1 text-body-sm text-neutral-600">{description}</p>
+      )}
+      {error && <p className="mt-1 text-body-sm text-red-700">{error}</p>}
     </div>
   );
 };
@@ -248,13 +258,15 @@ export const Option = ({
 }: TOptionProps) => {
   const [checked, toggle] = useToggle(selected);
 
+  console.log(checked);
+
   return (
     <li
       className={clsx(
-        "cursor-pointer transition-colors duration-200 hover:bg-indigo-50 hover:text-blue-700 active:bg-indigo-100",
-        selected && "bg-indigo-50 text-blue-700"
+        "cursor-pointer transition-colors duration-200 hover:bg-neutral-100 active:bg-neutral-200",
+        selected && "bg-primary-50 text-primary-600 hover:bg-primary-50"
       )}
-      onMouseDown={() => onChange && onChange(value)}
+      onMouseUp={() => onChange && onChange(value)}
     >
       {multiselect ? (
         <Checkbox

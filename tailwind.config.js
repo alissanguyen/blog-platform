@@ -23,7 +23,7 @@ module.exports = {
   safelist: [{ pattern: /.*/ }],
   theme: {
     fontFamily: {
-      hind: "var(--ff-hind)",
+      hind: "var(--ff-inter)",
     },
     screens: {
       xxs: "380px",
@@ -187,9 +187,10 @@ module.exports = {
         },
       },
     },
-    plugins: [
-      require("@tailwindcss/line-clamp"),
-      require("@tailwindcss/typography"),
-    ],
   },
+  plugins: [
+    rotateX,
+    require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/typography"),
+  ],
 };

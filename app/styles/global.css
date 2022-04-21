@@ -1,7 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 :root {
-  /* FONT CONFIG */
+  --primary-50: #f9f5ff;
+  --primary-100: #f4ebff;
+  --primary-200: #e9d7fe;
+  --primary-300: #d6bbfb;
+  --primary-400: #b692f6;
+  --primary-500: #9e77ed;
+  --primary-600: #7f56d9;
+  --primary-700: #6941c6;
+  --primary-800: #53389e;
+  --primary-900: #42307d;
+
+  --neutral-100: #f8f9fa;
+  --neutral-200: #e9ecef;
+  --neutral-300: #dee2e6;
+  --neutral-400: #ced4da;
+  --neutral-500: #adb5bd;
+  --neutral-600: #6c757d;
+  --neutral-700: #495057;
+  --neutral-800: #343a40;
+  --neutral-900: #212529;
+
+  --blue-100: #d1e6f6;
+  --blue-200: #b8d8f2;
+  --blue-300: #a0cbec;
+  --blue-400: #62a8e0;
+  --blue-500: #2485d2;
+  --blue-600: #1e6fc0;
+  --blue-700: #1758ad;
+  --blue-800: #0e2e7f;
+  --blue-900: #030351;
+
+  --green-100: #dbf3de;
+  --green-200: #bae8c9;
+  --green-300: #9cdeb7;
+  --green-400: #79d19f;
+  --green-500: #5bc88e;
+  --green-600: #3db675;
+  --green-700: #30935e;
+  --green-800: #236f48;
+  --green-900: #115538;
+
+  --red-100: #ffd5d5;
+  --red-200: #ffb9b9;
+  --red-300: #ff9e9c;
+  --red-400: #ff8785;
+  --red-500: #ff625f;
+  --red-600: #ff0a06;
+  --red-700: #db0400;
+  --red-800: #b60300;
+  --red-900: #8b0000;
+
+  --yellow-100: #fff6cc;
+  --yellow-200: #fff2b2;
+  --yellow-300: #ffee99;
+  --yellow-400: #ffe97f;
+  --yellow-500: #ffe566;
+  --yellow-600: #ffe14c;
+  --yellow-700: #ffdd32;
+  --yellow-800: #ffd819;
+  --yellow-900: #ffd400;
+
   --ratio: 1.25;
   --lh-tight: 1.25;
   --lh-base: 1.4;
@@ -29,9 +89,9 @@
   --fw-semibold: 600;
   --fw-bold: 700;
   --fw-extrabold: 800;
-  
+
   /* FONT FACE */
-  --ff-hind: 'Inter', sans-serif;
+  --ff-inter: "Inter", sans-serif;
 
   /* Z-INDEXES */
   --z-negative: -1;
@@ -55,7 +115,7 @@
 body {
   min-width: 100vw;
   overflow-x: hidden;
-  font-family: var(--ff-hind);
+  font-family: var(--ff-inter);
   font-weight: var(--fw-regular);
   font-size: var(--fs-body-md);
   line-height: var(--lh-base);
@@ -93,9 +153,8 @@ body {
 }
 
 /* BUTTON HOVER STYLE */
-
 .Button {
   transition-property: all;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 0.3s;
 }
