@@ -2,29 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* TODO: Fix this not being applied */
-@layer components {
-    .bg-primary {
-        @apply bg-white dark:bg-gray-900;
-    }
-  
-    .bg-secondary {
-        @apply bg-gray-100 dark:bg-gray-800;
-      }
-
-      .text-primary {
-        @apply text-black dark:text-white;
-      }
-    
-      .text-secondary {
-        @apply text-gray-500 dark:text-blueGray-500;
-      }
-    
-      .button-primary {
-        @apply bg-five hover:bg-six px-3 py-2
-      }
-}
-
 :root {
     /* APP PALETTE */
     --color-1: #21647e;
@@ -60,16 +37,54 @@
     --red-800: #b60300;
     --red-900: #8b0000;
 
+    /* BLUE */
+    --blue-100: #CDE8FF;
+    --blue-200: #B6DCFF;
+    --blue-300: #9BD0FF;
+    --blue-400: #57AEFF;
+    --blue-500: #138DFF;
+    --blue-600: #0177FF;
+    --blue-700: #005BE5;
+    --blue-800: #0031B7;
+    --blue-900: #000081;
+}
+
+.light-theme {
     /* YELLOW */
-    --yellow-100: #fff6cc;
-    --yellow-200: #fff2b2;
-    --yellow-300: #ffee99;
-    --yellow-400: #ffe97f;
-    --yellow-500: #ffe566;
-    --yellow-600: #ffe14c;
-    --yellow-700: #ffdd32;
-    --yellow-800: #ffd819;
-    --yellow-900: #ffd400;
+    --yellow-100: #fff5d7;
+    --yellow-200: #ffecb8;
+    --yellow-300: #ffe089;
+    --yellow-400: #ffd768;
+    --yellow-500: #f0c757;
+    --yellow-600: #e4ba45;
+    --yellow-700: #d3b521;
+    --yellow-800: #d7b60f;
+    --yellow-900: #cdab00;
+
+    /* GREEN */
+    --green-100: #e6f8f4;
+    --green-200: #b4ebde;
+    --green-300: #83dec8;
+    --green-400: #38caa7;
+    --green-500: #06bd91;
+    --green-600: #059774;
+    --green-700: #047157;
+    --green-800: #03523f;
+    --green-900: #02503e;
+    
+}
+
+.dark-theme {
+      /* YELLOW */
+      --yellow-100: #fff6cc;
+      --yellow-200: #fff2b2;
+      --yellow-300: #ffee99;
+      --yellow-400: #ffe97f;
+      --yellow-500: #ffe566;
+      --yellow-600: #ffe14c;
+      --yellow-700: #ffdd32;
+      --yellow-800: #ffd819;
+      --yellow-900: #ffd400;
 
     /* GREEN */
     --green-100: #E1F2DC;
@@ -82,14 +97,4 @@
     --green-800: #258031;
     --green-900: #136725;
 
-    /* BLUE */
-    --blue-100: #CDE8FF;
-    --blue-200: #B6DCFF;
-    --blue-300: #9BD0FF;
-    --blue-400: #57AEFF;
-    --blue-500: #138DFF;
-    --blue-600: #0177FF;
-    --blue-700: #005BE5;
-    --blue-800: #0031B7;
-    --blue-900: #000081;
 }
