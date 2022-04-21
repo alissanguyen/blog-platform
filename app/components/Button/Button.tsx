@@ -6,7 +6,13 @@ import clsx from "clsx";
 
 type TButtonTypes = "button" | "submit" | "reset";
 type TButtonVariants = "text" | "contained" | "outlined";
-type TButtonColors = "neutral" | "blue" | "green" | "red" | "yellow";
+type TButtonColors =
+  | "primary"
+  | "neutral"
+  | "blue"
+  | "green"
+  | "red"
+  | "yellow";
 type TButtonSizes = "xs" | "sm" | "md" | "lg" | "xl";
 type TButtonRounded = "xs" | "sm" | "md" | "lg" | "xl" | "full";
 type TButtonTransforms = "normal" | "lowercase" | "uppercase" | "capitalize";
@@ -44,35 +50,47 @@ type TButtonProps = TButtonAsButton | TButtonAsLink;
 
 const buttonVariants = {
   text: {
-    neutral: "border-transparent text-neutral-700 hover:bg-neutral-100",
-    blue: "border-transparent text-blue-500 hover:bg-blue-50",
-    red: "border-transparent text-red-500 hover:bg-red-50",
-    green: "border-transparent text-green-500 hover:bg-green-50",
-    yellow: "border-transparent text-yellow-700 hover:bg-yellow-50",
+    primary:
+      "border-transparent text-primary-700 hover:bg-primary-50 focus:ring-primary-100",
+    neutral:
+      "border-transparent text-neutral-700 hover:bg-neutral-100 focus:ring-neutral-200",
+    blue: "border-transparent text-blue-500 hover:bg-blue-50 focus:ring-blue-100",
+    red: "border-transparent text-red-700 hover:bg-red-50 focus:ring-red-100",
+    green:
+      "border-transparent text-green-600 hover:bg-green-50 focus:ring-green-100",
+    yellow:
+      "border-transparent text-yellow-500 hover:bg-yellow-50 focus:ring-yellow-100",
   },
   contained: {
+    primary:
+      "bg-primary-600 border-primary-600 text-white hover:bg-primary-700 hover:border-primary-700 focus:ring-primary-100",
     neutral:
-      "bg-neutral-700 border-neutral-700 text-white hover:bg-neutral-900 hover:border-neutral-900 hover:shadow-lg",
-    blue: "bg-blue-500 border-blue-500 text-white hover:bg-blue-600 hover:border-blue-600 hover:shadow-lg",
-    red: "bg-red-500 border-red-500 text-white hover:bg-red-600 hover:border-red-600 hover:shadow-lg",
+      "bg-neutral-700 border-neutral-700 text-white hover:bg-neutral-900 hover:border-neutral-900 focus:ring-neutral-200",
+    blue: "bg-blue-500 border-blue-500 text-white hover:bg-blue-600 hover:border-blue-600 focus:ring-blue-100",
+    red: "bg-red-700 border-red-700 text-white hover:bg-red-800 hover:border-red-800 focus:ring-red-100",
     green:
-      "bg-green-500 border-green-500 text-white hover:bg-green-600 hover:border-green-600 hover:shadow-lg",
+      "bg-green-600 border-green-600 text-white hover:bg-green-700 hover:border-green-700 focus:ring-green-100",
     yellow:
-      "bg-yellow-700 border-yellow-700 text-white hover:bg-yellow-900 hover:border-yellow-900 hover:shadow-lg",
+      "bg-yellow-300 border-yellow-300 text-black hover:bg-yellow-400 hover:border-yellow-400 focus:ring-yellow-100",
   },
   outlined: {
-    neutral: "border-neutral-700 text-neutral-700 hover:bg-neutral-100",
-    blue: "border-blue-500 text-blue-500 hover:bg-blue-50",
-    red: "border-red-500 text-red-500 hover:bg-red-50",
-    green: "border-green-500 text-green-500 hover:bg-green-50",
-    yellow: "border-yellow-700 text-yellow-700 hover:bg-yellow-50",
+    primary:
+      "border-primary-700 bg-primary-50 text-primary-700 hover:bg-primary-100 focus:ring-primary-100",
+    neutral:
+      "bg-white border-neutral-500 text-neutral-700 hover:bg-neutral-100 focus:ring-neutral-200",
+    blue: "border-blue-500 text-blue-500 hover:bg-blue-50 focus:ring-blue-100",
+    red: "border-red-700 text-red-700 hover:bg-red-50 focus:ring-red-100",
+    green:
+      "border-green-600 text-green-600 hover:bg-green-50 focus:ring-green-100",
+    yellow:
+      "border-yellow-500 text-yellow-500 hover:bg-yellow-50 focus:ring-yellow-100",
   },
   disabled: {
     text: "disabled:cursor-not-allowed disabled:text-neutral-400 disabled:hover:bg-transparent",
     contained:
       "disabled:cursor-not-allowed disabled:bg-neutral-300 disabled:border-neutral-300 disabled:text-neutral-500 disabled:hover:shadow-none",
     outlined:
-      "disabled:cursor-not-allowed disabled:text-neutral-400 disabled:border-neutral-400",
+      "disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:text-neutral-400 disabled:border-neutral-400",
   },
 };
 
@@ -81,7 +99,7 @@ const buttonSizes = {
   sm: "text-body-sm py-1 px-[10px]",
   md: "text-body-md py-[6px] px-4",
   lg: "text-body-lg py-2 px-[22px]",
-  xl: "text-body-lg py-3 px-7",
+  xl: "text-lead-2 py-3 px-7",
 };
 
 const buttonRounded = {
@@ -103,9 +121,9 @@ const buttonTransforms = {
 const Button = ({
   children,
   variant = "text",
-  color = "blue",
+  color = "primary",
   size = "md",
-  transform = "capitalize",
+  transform = "normal",
   type = "button",
   fluid,
   rounded = "full",
@@ -119,7 +137,7 @@ const Button = ({
   ...rest
 }: TButtonProps) => {
   const defaultClassName =
-    "relative inline-flex justify-center overflow-hidden items-center border outline-none font-semibold transition-all duration-200";
+    "relative inline-flex justify-center overflow-hidden items-center border outline-none font-semibold transition-all duration-200 focus:ring focus:ring-4";
   const allClassNames = clsx(
     defaultClassName,
     className,
@@ -139,10 +157,11 @@ const Button = ({
     const radius = diameter / 2;
 
     const rippleColors = {
+      primary: "bg-primary-500",
       neutral: "bg-neutral-500",
-      blue: "bg-blue-400",
+      blue: "bg-blue-300",
       red: "bg-red-400",
-      green: "bg-green-400",
+      green: "bg-green-300",
       yellow: "bg-yellow-600",
     };
 
