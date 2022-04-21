@@ -77,9 +77,7 @@ const Document: React.FC = (props) => {
 const Layout: React.FC = (props) => {
   return (
     <>
-      <NavBar />
       <div className="App__Content">{props.children}</div>
-      <Footer />
     </>
   );
 };
