@@ -1,6 +1,6 @@
 module.exports = {
   content: ["./app/**/*.{ts,tsx,jsx,js}"],
-  darkMode: 'class',
+  darkMode: "class",
   theme: {
     fontFamily: {
       hind: "var(--ff-hind)",
@@ -9,24 +9,31 @@ module.exports = {
       xxs: "380px",
       xs: "440px",
       sm: "575px",
-      md: '768px',
-      lg: '990px',
+      md: "768px",
+      lg: "990px",
       xl: "1200px",
-      "2xl": '1420px', // this is the "design resolution"
+      "2xl": "1420px", // this is the "design resolution"
     },
     fontSize: {
+      xl: "1.375rem", // 22px
+      "2xl": "1.5625rem", // 25px
+      "3xl": "1.875rem", // 30px
+      "4xl": "2.5rem", // 40px
+      "5xl": "3.125rem", // 50px
+      "6xl": "3.75rem", // 60px
+      "7xl": "4.375rem", // 70px
       display: "var(--fs-display)",
-      "h1": "var(--fs-headline-1)",
-      "h2": "var(--fs-headline-2)",
-      "h3": "var(--fs-headline-3)",
-      "h4": "var(--fs-headline-4)",
-      "h5": "var(--fs-headline-5)",
-      "h6": "var(--fs-headline-6)",
+      h1: "var(--fs-headline-1)",
+      h2: "var(--fs-headline-2)",
+      h3: "var(--fs-headline-3)",
+      h4: "var(--fs-headline-4)",
+      h5: "var(--fs-headline-5)",
+      h6: "var(--fs-headline-6)",
       "lead-1": "var(--fs-lead-1)",
       "lead-2": "var(--fs-lead-2)",
-      "bodyLg": "var(--fs-body-lg)",
-      "bodyMd": "var(--fs-body-md)",
-      "bodySm": "var(--fs-body-sm)",
+      "body-lg": "var(--fs-body-lg)",
+      "body-md": "var(--fs-body-md)",
+      "body-sm": "var(--fs-body-sm)",
       caption: "var(--fs-caption)",
       tiny: "var(--fs-tiny)",
     },
@@ -39,10 +46,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        transparent: 'transparent',
-        current: 'currentColor',
-        white: 'var(--color-white)',
-        black: 'var(--color-black)',
+        transparent: "transparent",
+        current: "currentColor",
         one: "var(--color-1)",
         two: "var(--color-2)",
         three: "var(--color-3)",
@@ -53,6 +58,18 @@ module.exports = {
         eight: "var(--color-8)",
         nine: "var(--color-9)",
         ten: "var(--color-10)",
+        primary: {
+          50: "var(--primary-50)",
+          100: "var(--primary-100)",
+          200: "var(--primary-200)",
+          300: "var(--primary-300)",
+          400: "var(--primary-400)",
+          500: "var(--primary-500)",
+          600: "var(--primary-600)",
+          700: "var(--primary-700)",
+          800: "var(--primary-800)",
+          900: "var(--primary-900)",
+        },
         neutral: {
           100: "var(--neutral-100)",
           200: "var(--neutral-200)",
@@ -129,14 +146,6 @@ module.exports = {
         popover: "var(--z-popover)",
         maximum: "var(--z-maximum)",
       },
-      fontSize: {
-        xl: '1.375rem', // 22px
-        '2xl': '1.5625rem', // 25px
-        '3xl': '1.875rem', // 30px
-        '4xl': '2.5rem', // 40px
-        '5xl': '3.125rem', // 50px
-        '6xl': '3.75rem', // 60px
-        '7xl': '4.375rem', // 70px
       animation: {
         ripple: "ripple 0.6s linear",
       },
@@ -153,9 +162,9 @@ module.exports = {
         },
       },
     },
+    plugins: [
+      require("@tailwindcss/line-clamp"),
+      require("@tailwindcss/typography"),
+    ],
   },
-  plugins: [
-    require("@tailwindcss/line-clamp"),
-    require("@tailwindcss/typography"),
-  ],
-}}
+};

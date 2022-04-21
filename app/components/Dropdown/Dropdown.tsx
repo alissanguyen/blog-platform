@@ -99,7 +99,7 @@ export const Menu = ({ children, open, className, position }: TMenuProps) => {
   const verticalPosition = (position && position.vertical) || "bottom";
   const horizontalPosition = (position && position.horizontal) || "left";
   const defaultClassName =
-    "absolute min-w-[200px] bg-white p-2.5 mt-2 shadow-lg border border-neutral-400 rounded-md overflow-hidden";
+    "absolute min-w-[200px] bg-white p-2 mt-2 shadow-lg border border-neutral-400 rounded-md overflow-hidden";
   const allClassNames = clsx(
     defaultClassName,
     className,
@@ -132,7 +132,7 @@ export const Menu = ({ children, open, className, position }: TMenuProps) => {
 };
 
 export const MenuDivider = () => {
-  return <div className="my-2.5 border-b border-neutral-400"></div>;
+  return <div className="my-2 border-b border-neutral-400"></div>;
 };
 
 export const MenuItem = ({
@@ -142,7 +142,7 @@ export const MenuItem = ({
   ...rest
 }: TMenuItemProps) => {
   const defaultClassName =
-    "flex justify-between items-center text-left font-medium px-4 py-2 rounded-md hover:bg-indigo-50 hover:text-blue-700 active:bg-indigo-100";
+    "flex justify-between items-center text-left font-medium px-4 py-2 rounded-md hover:bg-neutral-100 active:bg-neutral-200";
   const allClassNames = clsx(defaultClassName, className);
 
   if (rest.as === "a") {

@@ -3,98 +3,108 @@
 @tailwind utilities;
 
 :root {
-    /* APP PALETTE */
-    --color-1: #21647e;
-    --color-2: #288fa5;
-    --color-3: #25b4b8;
-    --color-4: #94D2BD;
-    --color-5: #E9D8A6;
-    --color-6: #EE9B00;
-    --color-7: #FD691F;
-    --color-8: #FD4614;
-    --color-9: #EC3228;
-    --color-10: #DA3639;
+  /* APP PALETTE */
+  --color-1: #21647e;
+  --color-2: #288fa5;
+  --color-3: #25b4b8;
+  --color-4: #94d2bd;
+  --color-5: #e9d8a6;
+  --color-6: #ee9b00;
+  --color-7: #fd691f;
+  --color-8: #fd4614;
+  --color-9: #ec3228;
+  --color-10: #da3639;
 
-    /* NEUTRAL */
-    --neutral-100: #f8f9fa;
-    --neutral-200: #e9ecef;
-    --neutral-300: #dee2e6;
-    --neutral-400: #ced4da;
-    --neutral-500: #adb5bd;
-    --neutral-600: #6c757d;
-    --neutral-700: #495057;
-    --neutral-800: #343a40;
-    --neutral-900: #212529;
+  /* PRIMARY */
+  --primary-50: #f9f5ff;
+  --primary-100: #f4ebff;
+  --primary-200: #e9d7fe;
+  --primary-300: #d6bbfb;
+  --primary-400: #b692f6;
+  --primary-500: #9e77ed;
+  --primary-600: #7f56d9;
+  --primary-700: #6941c6;
+  --primary-800: #53389e;
+  --primary-900: #42307d;
 
-    /* RED */
-    --red-100: #ffd5d5;
-    --red-200: #ffb9b9;
-    --red-300: #ff9e9c;
-    --red-400: #ff8785;
-    --red-500: #ff625f;
-    --red-600: #ff0a06;
-    --red-700: #db0400;
-    --red-800: #b60300;
-    --red-900: #8b0000;
+  /* NEUTRAL */
+  --neutral-100: #f8f9fa;
+  --neutral-200: #e9ecef;
+  --neutral-300: #dee2e6;
+  --neutral-400: #ced4da;
+  --neutral-500: #adb5bd;
+  --neutral-600: #6c757d;
+  --neutral-700: #495057;
+  --neutral-800: #343a40;
+  --neutral-900: #212529;
 
-    /* BLUE */
-    --blue-100: #CDE8FF;
-    --blue-200: #B6DCFF;
-    --blue-300: #9BD0FF;
-    --blue-400: #57AEFF;
-    --blue-500: #138DFF;
-    --blue-600: #0177FF;
-    --blue-700: #005BE5;
-    --blue-800: #0031B7;
-    --blue-900: #000081;
+  /* RED */
+  --red-100: #ffd5d5;
+  --red-200: #ffb9b9;
+  --red-300: #ff9e9c;
+  --red-400: #ff8785;
+  --red-500: #ff625f;
+  --red-600: #ff0a06;
+  --red-700: #db0400;
+  --red-800: #b60300;
+  --red-900: #8b0000;
+
+  /* BLUE */
+  --blue-100: #cde8ff;
+  --blue-200: #b6dcff;
+  --blue-300: #9bd0ff;
+  --blue-400: #57aeff;
+  --blue-500: #138dff;
+  --blue-600: #0177ff;
+  --blue-700: #005be5;
+  --blue-800: #0031b7;
+  --blue-900: #000081;
 }
 
 .light-theme {
-    /* YELLOW */
-    --yellow-100: #fff5d7;
-    --yellow-200: #ffecb8;
-    --yellow-300: #ffe089;
-    --yellow-400: #ffd768;
-    --yellow-500: #f0c757;
-    --yellow-600: #e4ba45;
-    --yellow-700: #d3b521;
-    --yellow-800: #d7b60f;
-    --yellow-900: #cdab00;
+  /* YELLOW */
+  --yellow-100: #fff5d7;
+  --yellow-200: #ffecb8;
+  --yellow-300: #ffe089;
+  --yellow-400: #ffd768;
+  --yellow-500: #f0c757;
+  --yellow-600: #e4ba45;
+  --yellow-700: #d3b521;
+  --yellow-800: #d7b60f;
+  --yellow-900: #cdab00;
 
-    /* GREEN */
-    --green-100: #e6f8f4;
-    --green-200: #b4ebde;
-    --green-300: #83dec8;
-    --green-400: #38caa7;
-    --green-500: #06bd91;
-    --green-600: #059774;
-    --green-700: #047157;
-    --green-800: #03523f;
-    --green-900: #02503e;
-    
+  /* GREEN */
+  --green-100: #e6f8f4;
+  --green-200: #b4ebde;
+  --green-300: #83dec8;
+  --green-400: #38caa7;
+  --green-500: #06bd91;
+  --green-600: #059774;
+  --green-700: #047157;
+  --green-800: #03523f;
+  --green-900: #02503e;
 }
 
 .dark-theme {
-      /* YELLOW */
-      --yellow-100: #fff6cc;
-      --yellow-200: #fff2b2;
-      --yellow-300: #ffee99;
-      --yellow-400: #ffe97f;
-      --yellow-500: #ffe566;
-      --yellow-600: #ffe14c;
-      --yellow-700: #ffdd32;
-      --yellow-800: #ffd819;
-      --yellow-900: #ffd400;
+  /* YELLOW */
+  --yellow-100: #fff6cc;
+  --yellow-200: #fff2b2;
+  --yellow-300: #ffee99;
+  --yellow-400: #ffe97f;
+  --yellow-500: #ffe566;
+  --yellow-600: #ffe14c;
+  --yellow-700: #ffdd32;
+  --yellow-800: #ffd819;
+  --yellow-900: #ffd400;
 
-    /* GREEN */
-    --green-100: #E1F2DC;
-    --green-200: #C0E8C0;
-    --green-300: #9FDEA3;
-    --green-400: #7FD286;
-    --green-500: #5EC869;
-    --green-600: #3BC048;
-    --green-700: #30A03D;
-    --green-800: #258031;
-    --green-900: #136725;
-
+  /* GREEN */
+  --green-100: #e1f2dc;
+  --green-200: #c0e8c0;
+  --green-300: #9fdea3;
+  --green-400: #7fd286;
+  --green-500: #5ec869;
+  --green-600: #3bc048;
+  --green-700: #30a03d;
+  --green-800: #258031;
+  --green-900: #136725;
 }

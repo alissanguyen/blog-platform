@@ -1,7 +1,13 @@
 import clsx from "clsx";
 
 type TLabelPlacement = "start" | "end" | "top" | "bottom";
-type TCheckboxColors = "neutral" | "blue" | "green" | "red" | "yellow";
+type TCheckboxColors =
+  | "primary"
+  | "neutral"
+  | "blue"
+  | "green"
+  | "red"
+  | "yellow";
 
 type TCheckboxProps = {
   color?: TCheckboxColors;
@@ -22,17 +28,16 @@ const labelPlacementStyles = {
 };
 
 const checkboxColors = {
-  neutral:
-    "bg-neutral-700 ring-neutral-700 hover:bg-neutral-900 hover:ring-neutral-900",
-  blue: "bg-blue-500 ring-blue-500 hover:bg-blue-600 hover:ring-blue-600",
-  green: "bg-green-500 ring-green-500 hover:bg-green-600 hover:ring-green-600",
-  red: "bg-red-500 ring-red-500 hover:bg-red-600 hover:ring-red-600",
-  yellow:
-    "bg-yellow-800 ring-yellow-800 hover:bg-yellow-900 hover:ring-yellow-900",
+  primary: "bg-primary-700 text-primary-700",
+  neutral: "bg-neutral-700 text-neutral-700",
+  blue: "bg-blue-500 text-blue-500",
+  green: "bg-green-500 text-green-500",
+  red: "bg-red-700 text-red-700",
+  yellow: "bg-yellow-400 text-yellow-400",
 };
 
 const Checkbox = ({
-  color = "blue",
+  color = "primary",
   label,
   labelPlacement = "end",
   size = 16,
@@ -43,8 +48,8 @@ const Checkbox = ({
   ...rest
 }: TCheckboxProps) => {
   const clickableClassName = checked
-    ? "before:scale-0 after:delay-200 after:scale-100 after:visible"
-    : "before:scale-100 ring-neutral-600 after:scale-0 after:invisible";
+    ? "ring-current before:scale-0 after:delay-150 after:scale-100 after:visible"
+    : "ring-neutral-500 before:scale-100 after:scale-0 after:invisible";
   const disabledClassName = checked
     ? "before:scale-0 bg-gray-300 ring-gray-300 after:scale-100 after:visible"
     : "before:scale-100 ring-neutral-400 after:scale-0 after:invisible";
