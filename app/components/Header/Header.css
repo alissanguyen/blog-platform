@@ -1,0 +1,295 @@
+.Header__Illustration__Wrapper > svg {    
+    max-width: 100%; 
+    max-height: 90vh;
+    overflow: hidden;
+}
+.Header__Text {
+    transform: translateX(-100px);
+}
+@keyframes veraoumaslidein {
+    0% {
+        transform:translateX(-1200px)
+    }
+    50% {
+        transform:translateX(45px)
+    } 
+    75% {
+        transform:translateX(-5px)
+    }
+    90% {
+        transform:translateX(3px)
+    }
+    to {
+        transform:translateX(0)
+    }
+}
+@keyframes veraoumascalein {
+    0%, 30% {
+        transform:scale(0)
+    }
+    50% {
+        transform:scale(1.1)
+    }
+    75% {
+        transform:scale(.98)
+    }
+    90% {
+        transform:scale(1.01)
+    }
+    to {
+        transform:scale(1)
+    }
+}
+
+@keyframes veraoumascaleinshadows {
+    0%, 30% {
+        transform:scaleX(0)
+    }
+    50% {
+        transform:scaleX(1.1)
+    }
+    75% {
+        transform:scaleX(.98)
+    }
+    90% {
+        transform:scaleX(1.01)
+    }
+    to{
+        transform:scaleX(1)
+    }
+}
+    
+@keyframes veraoumadropin {
+    0% {
+        transform:translateY(-450px) scale(0)
+    }
+    35% {
+        transform:translateY(-450px) scale(1.03)
+    }
+    50% {
+        transform:translateY(10px) scale(.98)
+    }
+    75% {
+        transform:translateY(0) scale(1.01)
+    }
+    90% {
+        transform:translateY(0) scale(1)
+    }
+    to {
+        transform:translateY(0)
+    }
+}
+    
+@keyframes tablethand {
+    0%, 48%, 75%, 90%,to {
+        transform:translateY(0)
+    } 50% {
+        transform:translateY(10px)
+    }
+}
+
+@keyframes taparm {
+    0%, 40%, 90% {
+        transform:rotate(2deg)
+    } 50% {
+        transform:rotate(-2deg)
+    }
+}
+
+@keyframes bottomarm {
+    0%, 40%, 90% {
+        transform:rotate(-4deg)
+    }
+    50% {
+        transform:rotate(2deg)
+    }
+}
+
+@keyframes taphand {
+    0%, 35%, 45%, 69%, 90%, to {
+        transform:rotate(0)
+    } 51% {
+        transform:rotate(10deg)
+    }
+}
+
+@keyframes airfeathers {
+    0%, 50% {
+        transform:scale(0)
+    } 35% {
+        transform:scale(0);
+        opacity:0
+    }
+    57%, 65%, 80% {
+        opacity:1
+    }
+    90% {
+        transform:scale(2)
+    }
+    to {
+        transform:scale(2);
+        opacity:0}
+    }
+
+@keyframes scalydeth {
+    0%, 50% {
+        transform:scale(0)
+    }
+    35% {
+        transform:scale(0);
+        opacity:0
+    }
+    57%, 65% {
+        opacity:1
+    }
+    90%, to {
+        transform:scale(1.2);
+        opacity:0
+    }
+}
+        
+@keyframes rotatyfeathers {
+    0%, 35%, 50%, 57%, 65%, to {
+        transform:rotate(0deg)
+    }
+    90% {
+        transform:rotate(180deg)
+    }
+}
+
+@keyframes coucheplants {
+    0%, to {
+        transform:scaleY(1) rotate(0deg);
+    }
+    50% {
+        transform:scaleY(1.1) rotate(1deg)
+    }
+}
+#veraouma.svgmate .oumaslidein, #veraouma.svgmate .plantshadow {    
+    animation-name:veraoumaslidein;
+    animation-iteration-count:1;
+    animation-duration:1s;
+    animation-timing-function:ease-in-out
+}
+#veraouma.svgmate .plantshadow {
+    animation-name:veraoumascaleinshadows;
+    animation-duration:1.6s;
+    transform-origin:1803.1px 400.8px
+}
+#veraouma.svgmate .coucheplants {
+    animation-name:coucheplants;
+    animation-timing-function:ease-in-out;
+    transform-origin:1783.9px 347.6px;
+    animation-iteration-count:infinite
+}
+
+.oumaplants {
+    animation-name:veraoumascalein;
+    animation-iteration-count:1;
+    animation-duration:1.6s;
+    animation-timing-function:ease-in-out;
+    transform-origin:1803.1px 380.8px
+}
+.coucheplants.p1 {
+    animation-duration:4s
+}
+.coucheplants.p2 {
+    animation-duration:8s
+}
+.coucheplants.p3 {
+    animation-duration:3.6s
+}
+.coucheplants.p4 {
+    animation-duration:4.8s
+}
+.coucheplants.p5 {
+    animation-duration:5.6s
+}
+#COUCH {
+    animation-name:veraoumaslidein;
+    animation-iteration-count:1;
+    animation-duration:1s;
+    animation-timing-function:ease-in-out
+}
+.plantshadow {
+    transform-origin:1733.1px
+}
+.oumashadows{
+    animation-name:veraoumaslidein;
+    animation-iteration-count:1;
+    animation-duration:1s;
+    animation-timing-function:ease-in-out;
+    transform-origin:1325.7px 450px
+}
+.taparm {
+    animation-name:taparm;
+    animation-iteration-count:infinite;
+    animation-duration:5s;
+    animation-timing-function:ease-in-out;
+    transform-origin:1207.3px 254.8px;
+    transform:rotate(2deg)
+}
+.bottomarm {
+    animation-name:bottomarm;
+    animation-iteration-count:infinite;
+    animation-duration:5s;
+    animation-timing-function:ease-in-out;
+    transform-origin:1239.2px 462.7px;
+    transform:rotate(-4deg)
+}
+.hand {
+    animation-name:taphand;
+    animation-iteration-count:infinite;
+    animation-duration:5s;
+    animation-timing-function:ease-in-out;
+    transform-origin:1323px 412.8px
+}
+.tablethand { 
+    animation-name:tablethand;
+    animation-iteration-count:1;
+    animation-duration:2s;
+    animation-timing-function:ease-in-out;
+    transform-origin:1429px 377.6px
+}
+#airfeathers, .airfeathers {
+    animation-name:airfeathers;
+    animation-iteration-count:infinite;
+    animation-duration:5s;
+    animation-timing-function:ease-out;
+    transform-origin:1404.2px 381.9px
+}
+.scalydeth {
+    animation-name:scalydeth;
+    animation-iteration-count:infinite;
+    animation-duration:5s;
+    animation-timing-function:ease-out;
+    transform-origin:1404.2px 381.9px
+}
+.rotatyfeathers3 {
+    animation-name:rotatyfeathers;
+    animation-iteration-count:infinite;
+    animation-duration:5s;
+    animation-timing-function:ease-out;
+    transform-origin:1394.8px 321.3px
+}
+.rotatyfeathers2 {
+    animation-name:rotatyfeathers;
+    animation-iteration-count:infinite;
+    animation-duration:5s;
+    animation-timing-function:ease-out;
+    transform-origin:1414.9px 301.2px
+}
+.rotatyfeathers1 {
+    animation-name:rotatyfeathers;
+    animation-iteration-count:infinite;
+    animation-duration:5s;
+    animation-timing-function:ease-out;
+    transform-origin:1436px 350.8px
+}
+.tablet {
+    animation-name:veraoumadropin;
+    animation-iteration-count:1;
+    animation-duration:2s;
+    animation-timing-function:ease-in-out;
+    transform-origin:1429px 377.6px
+}

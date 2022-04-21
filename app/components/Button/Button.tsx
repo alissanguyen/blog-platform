@@ -1,5 +1,7 @@
-import React, { ReactNode } from "react";
-import { Link, LinkProps } from "@remix-run/react";
+import type { ReactNode } from "react";
+import React from "react";
+import type { LinkProps } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 import clsx from "clsx";
 
 type TButtonTypes = "button" | "submit" | "reset";
