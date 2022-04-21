@@ -11,22 +11,22 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 
 import globalStyles from "./styles/global.css";
 import tailwind from "./styles/tailwind.css";
 import tailwindCustom from "./styles/tailwindcustom.css"
 import { getUser } from "./session.server";
-import NavBar, { links as NavBarStyles } from "./components/NavBar/NavBar";
-import Footer, { links as FooterStyles } from "./components/Footer/Footer";
+import { ThemeContextProvider, useTheme } from "./providers/themeProvider";
+import { SupportedTheme } from "./types";
+import { getThemeSession } from "./utils/theme.server";
 
 export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: globalStyles },
     { rel: "stylesheet", href: tailwind },
     { rel: "stylesheet", href: tailwindCustom },
-    ...NavBarStyles(),
-    ...FooterStyles(),
   ];
 };
 
@@ -38,28 +38,49 @@ export const meta: MetaFunction = () => ({
 });
 
 type LoaderData = {
-  user: Awaited<ReturnType<typeof getUser>>;
+  user: Awaited<ReturnType<typeof getUser>>
+  theme: SupportedTheme;
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
+  const themeValue = await getThemeSession(request);
+
   return json<LoaderData>({
     user: await getUser(request),
+    theme: themeValue.getTheme()
   });
 };
 
 export default function App() {
+  const { theme } = useLoaderData();
+
   return (
-    <Document>
-      <Layout>
-        <Outlet />
-      </Layout>
-    </Document>
+    <ThemeContextProvider initialTheme={theme}>
+      <Document>
+        <Layout>
+          <Outlet />
+        </Layout>
+      </Document>
+    </ThemeContextProvider>
   );
 }
 
+const convertSupportedThemeToClassName = (
+  theme: SupportedTheme,
+): string => {
+  if (theme === SupportedTheme.LIGHT) {
+    return "light-theme";
+  } else {
+    
+    return "dark-theme";
+  }
+};
+
 const Document: React.FC = (props) => {
+  const { theme } = useTheme();
+
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className={`${convertSupportedThemeToClassName(theme)} h-full`}>
       <head>
         <Meta />
         <Links />
