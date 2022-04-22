@@ -65,7 +65,12 @@ export const leftNavigationMenuLinks = [
         id: "home",
         label: "Home",
         link: "/home",
-
+        
+    },
+    {
+        id: "write",
+        label: "Write",
+        link: "/write",
     },
     {
         id: "notifications",
@@ -77,11 +82,10 @@ export const leftNavigationMenuLinks = [
         label: "Bookmarks",
         link: "/bookmarks",
     },
-    // QUESTION: Should we add this to the left menu?
-    // {
-    //     id: "write",
-    //     label: "Write",
-    //     link: "/write",
-    // },
+    {
+        id: "topics",
+        label: "Topics",
+        link: "/topics",
+    }
 ]
 
