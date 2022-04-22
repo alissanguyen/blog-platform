@@ -1,0 +1,12 @@
+.SignInPage__PinkBlob {
+    position: absolute;
+    left: -30rem;
+    top: -10rem;
+}
+
+.SignInPage__PurpleBlob {
+    position: absolute;
+    transform: rotate(160deg);
+    right: -40rem;
+    bottom: -10rem;
+}
