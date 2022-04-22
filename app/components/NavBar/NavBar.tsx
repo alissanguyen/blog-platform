@@ -1,14 +1,8 @@
-import type { LinksFunction } from "@remix-run/server-runtime";
 import * as React from "react";
 import { Container } from "../Container";
 import { Button } from "../Button";
-import styles from "./NavBar.css";
 
 interface Props {}
-
-export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: styles }];
-};
 
 const NavBar: React.FC<Props> = (props) => {
   return (
@@ -20,8 +14,9 @@ const NavBar: React.FC<Props> = (props) => {
           <Button
             as="a"
             to="/signin"
-            variant="outlined"
-            color="neutral"
+            variant="text"
+            color="primary"
+            disabled
             size="lg"
             className="mr-3"
           >
@@ -31,7 +26,7 @@ const NavBar: React.FC<Props> = (props) => {
             as="a"
             to="/signup"
             variant="contained"
-            color="primary"
+            color="neutral"
             size="lg"
           >
             Create account
