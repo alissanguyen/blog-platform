@@ -48,6 +48,7 @@ module.exports = {
       colors: {
         transparent: "transparent",
         current: "currentColor",
+        bgColor: "var(--bg-color)",
         one: "var(--color-1)",
         two: "var(--color-2)",
         three: "var(--color-3)",
