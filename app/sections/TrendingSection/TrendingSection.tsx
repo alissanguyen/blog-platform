@@ -1,19 +1,14 @@
-import type { LinksFunction } from '@remix-run/server-runtime';
 import * as React from 'react';
-import { fixedWidthContentClassname } from '~/constants';
-import styles from "./TrendingSection.css"
 import {TrendingUpIcon} from "@heroicons/react/outline"
 import { topTrendingSampleData } from '~/data';
+import { Container } from '~/components/Container';
 interface Props {
 
 }
 
-export const links: LinksFunction = () => {
-    return [{rel: "stylesheet", href: styles}]
-}
 const TrendingSection: React.FC<Props> = () => {
 return (
- <div className={`TrendingSection__Wrapper ${fixedWidthContentClassname} py-8 flex flex-col items-baseline`}>
+ <Container className={`TrendingSection__Wrapper py-8 flex flex-col items-baseline border-b-2`}>
      {/* TODO: Update App name */}
      <div className="TrendingSection__Header inline-flex gap-3 uppercase font-semibold text-xl text-primary-600 mb-2">
     <TrendingUpIcon className="w-7 h-7"/>
@@ -37,7 +32,7 @@ return (
 </article>
      )}) }
      </div>
- </div>
+ </Container>
  )
 }
 
