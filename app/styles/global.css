@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
   /* FONT CONFIG */
@@ -28,9 +28,10 @@
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
-
+  --fw-extrabold: 800;
+  
   /* FONT FACE */
-  --ff-hind: "Hind", sans-serif;
+  --ff-hind: 'Inter', sans-serif;
 
   /* Z-INDEXES */
   --z-negative: -1;
@@ -54,6 +55,7 @@ body {
   font-weight: var(--fw-regular);
   font-size: var(--fs-body-md);
   line-height: var(--lh-base);
+  background: var(--bg-color);
 }
 
 @media screen and (min-width: 968px) {
@@ -62,7 +64,15 @@ body {
   }
 }
 
-.HomePage {
-  background-image: url("/assets/gradient2.png");
+.Hero__Wrapper {
+  background-image: url("/assets/gradient.png");
   background-size: cover;
+}
+
+/* BUTTON HOVER STYLE */
+
+.Button {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: 0.3s;
 }

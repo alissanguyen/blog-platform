@@ -7,6 +7,7 @@ export const links: LinksFunction = () => {
 };
 
 const Footer: React.FC = () => {
+  // TODO: Add links to footer
   return <div>Copyrights etc...</div>;
 };
 
