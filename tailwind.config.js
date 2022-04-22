@@ -1,6 +1,7 @@
 module.exports = {
   content: ["./app/**/*.{ts,tsx,jsx,js}"],
   darkMode: "class",
+  safelist: [{ pattern: /.*/ }],
   theme: {
     fontFamily: {
       hind: "var(--ff-hind)",
@@ -15,6 +16,9 @@ module.exports = {
       "2xl": "1420px", // this is the "design resolution"
     },
     fontSize: {
+      xs: "0.525rem",
+      sm: "0.875rem",
+      lg: "1.125rem",      
       xl: "1.375rem", // 22px
       "2xl": "1.5625rem", // 25px
       "3xl": "1.875rem", // 30px
@@ -43,6 +47,7 @@ module.exports = {
       medium: "var(--fw-medium)",
       semibold: "var(--fw-semibold)",
       bold: "var(--fw-bold)",
+      extrabold: "var(--fw-extrabold)"
     },
     extend: {
       colors: {
