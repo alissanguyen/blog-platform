@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Khula:wght@700;800&display=swap');
+
+.Trending__Number {
+    font-family: 'Khula', sans-serif;
+}
+
+.FeedSection__TrendingAuthors li:nth-child(even) {
+    background-color: #cd8dff11;
+}
+
+.FeedSection__BlogPosts li:nth-child(odd) {
+    background-color: #f4ebffbf;
+    border-radius: 0.5rem;
+}
