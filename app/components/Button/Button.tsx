@@ -51,39 +51,39 @@ type TButtonProps = TButtonAsButton | TButtonAsLink;
 const buttonVariants = {
   text: {
     primary:
-      "border-transparent text-primary-700 hover:bg-primary-50 focus:ring-primary-100",
+      "border-transparent text-primary-700 hover:bg-primary-200 hover:ring-primary-600 focus:ring-primary-600 active:text-white active:bg-primary-600",
     neutral:
-      "border-transparent text-neutral-700 hover:bg-neutral-100 focus:ring-neutral-200",
-    blue: "border-transparent text-blue-500 hover:bg-blue-50 focus:ring-blue-100",
-    red: "border-transparent text-red-700 hover:bg-red-50 focus:ring-red-100",
+      "border-transparent text-neutral-700 hover:bg-neutral-200 hover:ring-neutral-600 focus:ring-neutral-600 active:text-white active:bg-neutral-600",
+    blue: "border-transparent text-blue-700 hover:bg-blue-200 hover:ring-blue-600 focus:ring-blue-600 active:text-white active:bg-blue-600",
+    red: "border-transparent text-red-700 hover:bg-red-200 hover:ring-red-600 focus:ring-red-600 active:text-white active:bg-red-600",
     green:
-      "border-transparent text-green-600 hover:bg-green-50 focus:ring-green-100",
+      "border-transparent text-green-700 hover:bg-green-200 hover:ring-green-600 focus:ring-green-600 active:text-white active:bg-green-600",
     yellow:
-      "border-transparent text-yellow-500 hover:bg-yellow-50 focus:ring-yellow-100",
+      "border-transparent text-yellow-700 hover:bg-yellow-200 hover:ring-yellow-600 focus:ring-yellow-600 active:text-white active:bg-yellow-600",
   },
   contained: {
     primary:
-      "bg-primary-600 border-primary-600 text-white hover:bg-primary-700 hover:border-primary-700 focus:ring-primary-100",
+      "bg-primary-700 border-primary-700 text-white hover:ring-primary-700 focus:ring-primary-700 active:bg-primary-400 active:ring-primary-400 active:border-primary-400",
     neutral:
-      "bg-neutral-700 border-neutral-700 text-white hover:bg-neutral-900 hover:border-neutral-900 focus:ring-neutral-200",
-    blue: "bg-blue-500 border-blue-500 text-white hover:bg-blue-600 hover:border-blue-600 focus:ring-blue-100",
-    red: "bg-red-700 border-red-700 text-white hover:bg-red-800 hover:border-red-800 focus:ring-red-100",
+      "bg-neutral-900 border-neutral-900 text-white hover:ring-neutral-900 focus:ring-neutral-900 active:bg-neutral-600 active:ring-neutral-600 active:border-neutral-600",
+    blue: "bg-blue-600 border-blue-600 text-white hover:border-blue-600 hover:ring-blue-600 focus:ring-blue-600 focus:border-blue-600 active:bg-blue-400 active:ring-blue-400 active:border-blue-400",
+    red: "bg-red-700 border-red-700 text-white hover:ring-red-700 focus:ring-red-700 active:bg-red-500 active:ring-red-500 active:border-red-500",
     green:
-      "bg-green-600 border-green-600 text-white hover:bg-green-700 hover:border-green-700 focus:ring-green-100",
+      "bg-green-600 border-green-600 text-white hover:ring-green-600 focus:ring-green-600 active:bg-green-400 active:ring-green-400 active:border-green-400",
     yellow:
-      "bg-yellow-300 border-yellow-300 text-black hover:bg-yellow-400 hover:border-yellow-400 focus:ring-yellow-100",
+      "bg-yellow-500 border-yellow-500 text-white hover:ring-yellow-500 focus:ring-yellow-500 active:bg-yellow-400 active:ring-yellow-400 active:border-yellow-400",
   },
   outlined: {
     primary:
-      "border-primary-700 bg-primary-50 text-primary-700 hover:bg-primary-100 focus:ring-primary-100",
+      "bg-white border-primary-600 text-primary-600 hover:ring-primary-600 focus:ring-primary-600 active:bg-primary-200",
     neutral:
-      "bg-white border-neutral-500 text-neutral-700 hover:bg-neutral-100 focus:ring-neutral-200",
-    blue: "border-blue-500 text-blue-500 hover:bg-blue-50 focus:ring-blue-100",
-    red: "border-red-700 text-red-700 hover:bg-red-50 focus:ring-red-100",
+      "bg-white border-neutral-900 text-neutral-900 hover:ring-neutral-900 focus:ring-neutral-900 active:bg-neutral-200",
+    blue: "bg-white border-blue-600 text-blue-600 hover:ring-blue-600 focus:ring-blue-600 active:bg-blue-100",
+    red: "bg-white border-red-600 text-red-600 hover:ring-red-600 focus:ring-red-600 active:bg-red-100",
     green:
-      "border-green-600 text-green-600 hover:bg-green-50 focus:ring-green-100",
+      "bg-white border-green-600 text-green-600 hover:ring-green-600 focus:ring-green-600 active:bg-green-200",
     yellow:
-      "border-yellow-500 text-yellow-500 hover:bg-yellow-50 focus:ring-yellow-100",
+      "bg-white border-yellow-700 text-yellow-700 hover:ring-yellow-700 focus:ring-yellow-700 active:bg-yellow-100",
   },
   disabled: {
     text: "disabled:cursor-not-allowed disabled:text-neutral-400 disabled:hover:bg-transparent",
@@ -118,7 +118,10 @@ const buttonTransforms = {
   capitalize: "capitalize",
 };
 
-const Button = ({
+const defaultClassName =
+    "relative inline-flex justify-center overflow-hidden items-center border outline-none font-semibold transition-all duration-200 hover:ring focus:ring ring-offset-4";
+
+  const Button = ({
   children,
   variant = "text",
   color = "primary",
@@ -136,8 +139,7 @@ const Button = ({
   onClick,
   ...rest
 }: TButtonProps) => {
-  const defaultClassName =
-    "relative inline-flex justify-center overflow-hidden items-center border outline-none font-semibold transition-all duration-200 focus:ring focus:ring-4";
+  
   const allClassNames = clsx(
     defaultClassName,
     className,
@@ -157,11 +159,11 @@ const Button = ({
     const radius = diameter / 2;
 
     const rippleColors = {
-      primary: "bg-primary-500",
-      neutral: "bg-neutral-500",
-      blue: "bg-blue-300",
-      red: "bg-red-400",
-      green: "bg-green-300",
+      primary: "bg-primary-600",
+      neutral: "bg-neutral-900",
+      blue: "bg-blue-600",
+      red: "bg-red-600",
+      green: "bg-green-600",
       yellow: "bg-yellow-600",
     };
 
@@ -195,9 +197,9 @@ const Button = ({
         target={target}
         {...otherAttr}
       >
-        {prefix && <span className="mr-2">{prefix}</span>}
+        {prefix && <span className="Button mr-2">{prefix}</span>}
         {children}
-        {suffix && <span className="ml-2">{suffix}</span>}
+        {suffix && <span className="Button ml-2">{suffix}</span>}
       </Link>
     );
   }
@@ -214,9 +216,9 @@ const Button = ({
       disabled={disabled}
       {...otherAttr}
     >
-      {prefix && <span className="mr-2">{prefix}</span>}
+      {prefix && <span className="Button mr-2">{prefix}</span>}
       {children}
-      {suffix && <span className="ml-2">{suffix}</span>}
+      {suffix && <span className="Button ml-2">{suffix}</span>}
     </button>
   );
 };

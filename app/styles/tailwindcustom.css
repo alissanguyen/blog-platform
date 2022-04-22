@@ -62,6 +62,9 @@
 }
 
 .light-theme {
+  /* BACKGROUND COLOR */
+  --bg-color: white;
+  
   /* YELLOW */
   --yellow-100: #fff5d7;
   --yellow-200: #ffecb8;
@@ -86,6 +89,9 @@
 }
 
 .dark-theme {
+  /* BACKGROUND COLOR */
+  --bg-color: black;
+
   /* YELLOW */
   --yellow-100: #fff6cc;
   --yellow-200: #fff2b2;

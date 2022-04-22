@@ -16,9 +16,9 @@ const Header: React.FC<Props> = () => {
       </div>
       <div className="Header__Text flex flex-col items-baseline justify-center">
         <span className="mb-20 text-4xl font-bold">
-          Welcome to ____, a place to express your ideas, opinions, and more!
+          Welcome to <span className="text-primary-600">___</span>, a place to express your ideas, opinions, and more!
         </span>
-        <Button as="a" to="/write" variant="contained" color="yellow" size="xl">
+        <Button as="a" to="/write" variant="outlined" color="primary" size="xl">
           Start writing
         </Button>
       </div>
