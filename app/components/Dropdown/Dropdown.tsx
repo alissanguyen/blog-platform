@@ -1,12 +1,14 @@
-import React, {
-  Fragment,
+import type {
   ReactChild,
   ReactChildren,
-  ReactElement,
+  ReactElement} from "react";
+import React, {
+  Fragment,
   useRef,
   useState,
 } from "react";
-import { Link, LinkProps } from "@remix-run/react";
+import type { LinkProps } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOnClickOutside } from "~/hooks";
 import clsx from "clsx";

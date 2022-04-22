@@ -28,7 +28,8 @@
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
-
+  --fw-extrabold: 800;
+  
   /* FONT FACE */
   --ff-hind: 'Inter', sans-serif;
 
@@ -64,7 +65,7 @@ body {
 }
 
 .Hero__Wrapper {
-  background-image: url("/assets/gradient.svg");
+  background-image: url("/assets/gradient.png");
   background-size: cover;
 }
 
