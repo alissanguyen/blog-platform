@@ -1,6 +1,7 @@
 module.exports = {
   content: ["./app/**/*.{ts,tsx,jsx,js}"],
   darkMode: "class",
+  safelist: [{ pattern: /.*/ }],
   theme: {
     fontFamily: {
       hind: "var(--ff-hind)",
