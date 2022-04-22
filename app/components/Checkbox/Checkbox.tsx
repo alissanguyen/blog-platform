@@ -56,7 +56,7 @@ const Checkbox = ({
     ? "before:scale-0 bg-gray-300 ring-gray-300 after:scale-100 after:visible"
     : "before:scale-100 ring-neutral-400 after:scale-0 after:invisible";
   const defaultClassName =
-    "relative inline-flex items-center justify-center w-checkbox h-checkbox overflow-hidden ring-2 rounded transition-all after:w-1/3 after:h-2/3 after:border-r-2 after:border-b-2 after:border-white after:-translate-y-px after:rotate-45 after:duration-100 after:ease-linear after:transition-transform before:duration-150 before:absolute before:w-full before:h-full before:bg-white";
+    "relative inline-flex items-center justify-center w-checkbox h-checkbox overflow-hidden ring-1 -mt-0.5 rounded transition-all after:w-1/3 after:h-2/3 after:border-r-2 after:border-b-2 after:border-white after:-translate-y-px after:rotate-45 after:duration-100 after:ease-linear after:transition-transform before:duration-150 before:absolute before:w-full before:h-full before:bg-white";
   const allClassNames = clsx(
     defaultClassName,
     disabled
@@ -68,7 +68,7 @@ const Checkbox = ({
   return (
     <label
       className={clsx(
-        "text-sm inline-flex select-none items-center gap-3",
+        "inline-flex select-none items-center gap-3 text-sm",
         labelPlacementStyles[labelPlacement],
         disabled ? "cursor-not-allowed" : "cursor-pointer",
         containerClassName

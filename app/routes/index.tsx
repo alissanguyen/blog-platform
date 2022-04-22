@@ -1,5 +1,4 @@
 import type { LinksFunction } from "@remix-run/server-runtime";
-import { EnvelopeSimple } from "phosphor-react";
 import Header, { links as HeaderStyles } from "~/components/Header/Header";
 import NavBar from "~/components/NavBar/NavBar";
 import FeedSection from "~/sections/FeedSection.tsx/FeedSection";

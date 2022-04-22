@@ -5,10 +5,12 @@ import { Tooltip } from "../Tooltip";
 
 const MAX_LENGTH_INPUT = 256;
 
+type TInputVariants = "text" | "outlined";
 type TInputTypes = "email" | "text" | "password";
 type TInputSizes = "xs" | "sm" | "md" | "lg" | "xl";
 
 type TInputProps = {
+  variant?: TInputVariants;
   type?: TInputTypes;
   size?: TInputSizes;
   name: string;
@@ -23,13 +25,22 @@ type TInputProps = {
   error?: string;
   prefix?: ReactNode;
   suffix?: ReactNode;
+  disabled?: boolean;
   onChange?: () => void;
   onFocus?:
     | (() => void)
     | ((event: React.ChangeEvent<HTMLInputElement>) => void);
 };
 
-const inputSizes = {
+const inputTextSizes = {
+  xs: "py-1",
+  sm: "py-1.5",
+  md: "py-2",
+  lg: "py-2.5",
+  xl: "py-3",
+};
+
+const inputOutlinedSizes = {
   xs: "px-2.5 py-1",
   sm: "px-3 py-1.5",
   md: "px-3.5 py-2",
@@ -40,6 +51,7 @@ const inputSizes = {
 const Input = forwardRef<HTMLInputElement, TInputProps>(
   (
     {
+      variant = "outlined",
       type = "text",
       size = "md",
       name,
@@ -52,6 +64,7 @@ const Input = forwardRef<HTMLInputElement, TInputProps>(
       error,
       prefix,
       suffix,
+      disabled,
       onFocus,
       ...rest
     },
@@ -60,7 +73,7 @@ const Input = forwardRef<HTMLInputElement, TInputProps>(
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [isFocus, setIsFocus] = useState<boolean>(false);
 
-    const defaultClassName = "flex flex-col items-stretch";
+    const defaultClassName = "flex flex-col items-stretch mb-3";
     const allClassNames = clsx(defaultClassName, className);
 
     const handleFocus = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,14 +91,24 @@ const Input = forwardRef<HTMLInputElement, TInputProps>(
           <div className="mb-1 text-body-sm font-semibold">{label}</div>
           <div
             className={clsx(
-              "relative flex items-center rounded-lg border ring-4",
-              inputSizes[size],
+              "relative flex items-center",
+              variant === "text"
+                ? "border-b after:absolute after:left-0 after:top-full after:h-0.5 after:w-0 after:border-b-2 after:border-primary-300 after:transition-all after:duration-300"
+                : "rounded-lg border ring-4",
+              variant === "text"
+                ? inputTextSizes[size]
+                : inputOutlinedSizes[size],
+              disabled && "bg-neutral-200",
               error
                 ? isFocus
                   ? "border-red-700 ring-red-100"
                   : "border-red-700 ring-transparent"
                 : isFocus
-                ? "border-primary-300 ring-primary-100"
+                ? clsx(
+                    variant === "text"
+                      ? "after:w-full"
+                      : "border-primary-300 ring-primary-100"
+                  )
                 : "border-neutral-400 ring-transparent"
             )}
           >
@@ -105,12 +128,19 @@ const Input = forwardRef<HTMLInputElement, TInputProps>(
               ref={ref}
               name={name}
               placeholder={placeholder}
+              disabled={disabled}
               onFocus={handleFocus}
               onBlur={handleBlur}
               {...rest}
             />
             {hint && (
-              <Tooltip message={hint} className="-mr-1 ml-2">
+              <Tooltip
+                message={hint}
+                className={clsx(
+                  "ml-2",
+                  variant === "outlined" ? "-mr-1" : "mr-1"
+                )}
+              >
                 <Question size={18} className={clsx(error && "text-red-700")} />
               </Tooltip>
             )}
@@ -119,14 +149,15 @@ const Input = forwardRef<HTMLInputElement, TInputProps>(
               <button
                 type="button"
                 className={clsx(
-                  "-mr-1 ml-2 outline-none",
+                  "ml-2 outline-none",
+                  variant === "outlined" ? "-mr-1" : "mr-1",
                   error && "text-red-700"
                 )}
                 onClick={() => setShowPassword((prevState) => !prevState)}
                 tabIndex={-1}
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
-                {showPassword ? <Eye size={20} /> : <EyeSlash size={20} />}
+                {showPassword ? <Eye size={19} /> : <EyeSlash size={19} />}
               </button>
             )}
           </div>

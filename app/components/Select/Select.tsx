@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { CaretDown, MagnifyingGlass } from "phosphor-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useDebounce, useOnClickOutside, useToggle } from "~/hooks";
-import NoSearchResult from "~/public/images/NoSearchResult.png";
+import NoSearchResult from "~/public/assets/no-search-result.png";
 import { Checkbox } from "../Checkbox";
 
 type TSelectProps = {
@@ -16,6 +16,7 @@ type TSelectProps = {
   maxHeight?: number;
   searchable?: boolean;
   multiselect?: boolean;
+  disabled?: boolean;
   className?: string;
   onChange: (value: string | string[]) => void;
 };
@@ -38,6 +39,7 @@ export const Select = ({
   maxHeight = 250,
   searchable = false,
   multiselect = false,
+  disabled,
   className,
   onChange,
 }: TSelectProps) => {
@@ -103,7 +105,7 @@ export const Select = ({
     <div className={allClassNames} ref={ref}>
       <div
         className="mb-1 text-body-sm font-semibold"
-        onClick={() => setOpen(true)}
+        onClick={() => !disabled && setOpen(true)}
       >
         {label}
       </div>
@@ -111,6 +113,7 @@ export const Select = ({
         <div
           className={clsx(
             "cursor-pointer rounded-lg border outline-none ring-4",
+            disabled && "bg-neutral-200",
             error
               ? open
                 ? "border-red-700 ring-red-100"
@@ -120,8 +123,8 @@ export const Select = ({
               : "border-neutral-400 ring-transparent"
           )}
           tabIndex={0}
-          onFocus={() => setOpen(true)}
-          onClick={() => setOpen(true)}
+          onFocus={() => !disabled && setOpen(true)}
+          onClick={() => !disabled && setOpen(true)}
         >
           {searchable ? (
             <div className="relative flex items-center">
