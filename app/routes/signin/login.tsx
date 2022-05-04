@@ -1,28 +1,15 @@
-import type { LinksFunction } from "@remix-run/server-runtime";
 import type {
   ActionFunction,
   LoaderFunction,
   MetaFunction,
 } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
-
 import { Form, Link, useActionData, useSearchParams } from "@remix-run/react";
-import { Link, useActionData, useSearchParams } from "@remix-run/react";
 import * as React from "react";
 
 import { createUserSession, getUserId } from "~/session.server";
 import { verifyLogin } from "~/models/user.server";
 import { validateEmail } from "~/utils";
-
-import LoginSection from "~/sections/AuthSection/LoginSection";
-import AnimationLogin, {
-  links as AnimationLoginStyles,
-} from "~/sections/AuthSection/AnimationLogin";
-
-export const links: LinksFunction = () => {
-  return AnimationLoginStyles();
-};
-
 
 export const loader: LoaderFunction = async ({ request }) => {
   const userId = await getUserId(request);
@@ -89,7 +76,6 @@ export const meta: MetaFunction = () => {
 };
 
 export default function LoginPage() {
-
   const [searchParams] = useSearchParams();
   const redirectTo = searchParams.get("redirectTo") || "/notes";
   const actionData = useActionData() as ActionData;

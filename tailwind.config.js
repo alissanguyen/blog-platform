@@ -1,10 +1,29 @@
+const plugin = require("tailwindcss/plugin");
+
+const rotateX = plugin(function ({ addUtilities }) {
+  addUtilities({
+    ".rotate-x-45": {
+      transform: "rotateX(45deg)",
+    },
+    ".rotate-x-90": {
+      transform: "rotateX(90deg)",
+    },
+    ".rotate-x-135": {
+      transform: "rotateX(135deg)",
+    },
+    ".rotate-x-180": {
+      transform: "rotateX(180deg)",
+    },
+  });
+});
+
 module.exports = {
   content: ["./app/**/*.{ts,tsx,jsx,js}"],
   darkMode: "class",
   safelist: [{ pattern: /.*/ }],
   theme: {
     fontFamily: {
-      hind: "var(--ff-hind)",
+      hind: "var(--ff-inter)",
     },
     screens: {
       xxs: "380px",
@@ -168,9 +187,10 @@ module.exports = {
         },
       },
     },
-    plugins: [
-      require("@tailwindcss/line-clamp"),
-      require("@tailwindcss/typography"),
-    ],
   },
+  plugins: [
+    rotateX,
+    require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/typography"),
+  ],
 };
