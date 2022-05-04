@@ -45,3 +45,11 @@ export function useUser(): User {
 export function validateEmail(email: unknown): email is string {
   return typeof email === "string" && email.length > 3 && email.includes("@");
 }
+
+export const getTextWidth = (text: string, font = "Hind") => {
+  const canvas = document && document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  ctx!.font = font;
+  return ctx!.measureText(text).width;
+};

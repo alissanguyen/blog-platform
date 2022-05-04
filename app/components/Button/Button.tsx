@@ -119,9 +119,9 @@ const buttonTransforms = {
 };
 
 const defaultClassName =
-    "relative inline-flex justify-center overflow-hidden items-center border outline-none font-semibold transition-all duration-200 hover:ring focus:ring ring-offset-4";
+  "relative inline-flex justify-center overflow-hidden items-center border outline-none font-semibold transition-all duration-200 hover:ring focus:ring ring-offset-4";
 
-  const Button = ({
+const Button = ({
   children,
   variant = "text",
   color = "primary",
@@ -139,7 +139,6 @@ const defaultClassName =
   onClick,
   ...rest
 }: TButtonProps) => {
-  
   const allClassNames = clsx(
     defaultClassName,
     className,
