@@ -16,6 +16,10 @@ export async function getUserByEmail(email: User["email"]) {
 export async function createUser(email: User["email"], password: string) {
   const hashedPassword = await bcrypt.hash(password, 10);
 
+  // TODO: Fix this bug 
+  /**
+   * Type '{ email: string; password: { create: { hash: string; }; }; }' is not assignable to type '(Without<UserCreateInput, UserUncheckedCreateInput> & UserUncheckedCreateInput) | (Without<...> & UserCreateInput)'.
+   */
   return prisma.user.create({
     data: {
       email,
@@ -28,6 +32,7 @@ export async function createUser(email: User["email"], password: string) {
   });
 }
 
+// TODO: Modify this function so only authorized user can delete their own account
 export async function deleteUserByEmail(email: User["email"]) {
   return prisma.user.delete({ where: { email } });
 }
@@ -59,4 +64,25 @@ export async function verifyLogin(
   const { password: _password, ...userWithoutPassword } = userWithPassword;
 
   return userWithoutPassword;
+}
+
+
+export function resetPassword(userId: string) {
+  return  null
+  // TODO: Enable this
+}
+
+export function followAnotherUser(primaryUserId: string, userWantedToFollowId: string) {
+  return  null
+  // TODO: Enable this
+}
+
+export function unfollowAnotherUser(primaryUserId: string, userWantedToUnfollowId: string) {
+  return  null
+  // TODO: Enable this
+}
+
+export function addFollowedTopics(topicId: string, userId: string) {
+  return  null
+  // TODO: Enable this
 }

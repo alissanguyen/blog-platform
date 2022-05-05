@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Container } from "../Container";
-import { Button } from "../Button";
-import { Logo } from "../Logo";
+import Button from "../Button/Button";
+import Container from "../Container/Container";
+import Logo from "../Logo/Logo";
 
 interface Props {}
 

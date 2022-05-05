@@ -1,4 +1,5 @@
-import { useState, ReactChild, ReactChildren, useEffect } from "react";
+import type { ReactChild, ReactChildren} from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import clsx from "clsx";
 import { getTextWidth } from "~/utils";
@@ -57,7 +58,7 @@ const Tooltip = ({
     if (getTextWidth(message) > maxWidth) {
       setOverflow(true);
     }
-  }, []);
+  }, [maxWidth, message]);
 
   const handleMouseEnter = () => {
     setDelayHandler(

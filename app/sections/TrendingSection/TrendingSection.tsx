@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {TrendingUpIcon} from "@heroicons/react/outline"
 import { topTrendingSampleData } from '~/data';
-import { Container } from '~/components/Container';
+import Container from '~/components/Container/Container';
 interface Props {
 
 }

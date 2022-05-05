@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container } from '~/components/Container';
+import Container from '~/components/Container/Container';
 import PostCard from '~/components/PostCard/PostCard';
 import { sampleDataInfiniteScroll, sampleTrendingAuthors, sampleTrendingTags } from '~/data';
 
@@ -7,7 +7,7 @@ interface Props {
 
 }
 
-const FeedSection: React.FC<Props> = ({ }) => {
+const FeedSection: React.FC<Props> = () => {
  return (
  <Container className="FeedSection__Wrapper py-10 grid gap-8 grid-cols-7">
      <ul className="FeedSection__BlogPosts flex flex-col gap-3 col-span-5">

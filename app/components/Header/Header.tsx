@@ -1,6 +1,6 @@
 import type { LinksFunction } from "@remix-run/server-runtime";
 import * as React from "react";
-import { Button } from "../Button";
+import Button from "../Button/Button";
 import styles from "./Header.css";
 import Illustration from "./Illustration";
 

@@ -1,4 +1,4 @@
-import { ReactChild, ReactChildren } from "react";
+import type { ReactChild, ReactChildren } from "react";
 import { Link } from "@remix-run/react";
 import clsx from "clsx";
 

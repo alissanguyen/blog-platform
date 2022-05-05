@@ -1,7 +1,8 @@
-import React, { forwardRef, ReactNode, useState } from "react";
+import type { ReactNode} from "react";
+import React, { forwardRef, useState } from "react";
 import clsx from "clsx";
 import { Eye, EyeSlash, Question } from "phosphor-react";
-import { Tooltip } from "../Tooltip";
+import Tooltip from "../Tooltip/Tooltip";
 
 const MAX_LENGTH_INPUT = 256;
 
@@ -48,6 +49,7 @@ const inputOutlinedSizes = {
   xl: "px-5 py-3",
 };
 
+// eslint-disable-next-line react/display-name
 const Input = forwardRef<HTMLInputElement, TInputProps>(
   (
     {

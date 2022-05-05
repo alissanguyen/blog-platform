@@ -42,6 +42,7 @@ export function useUser(): User {
   return maybeUser;
 }
 
+// TODO: Use regEx to validate email
 export function validateEmail(email: unknown): email is string {
   return typeof email === "string" && email.length > 3 && email.includes("@");
 }

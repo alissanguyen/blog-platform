@@ -10,9 +10,10 @@ import React, {
 import type { LinkProps } from "@remix-run/react";
 import { Link } from "@remix-run/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useOnClickOutside } from "~/hooks";
 import clsx from "clsx";
+import useOnClickOutside from "~/hooks/useOnClickOutside";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type TMenuItemAs = "button" | "a";
 type TMenuPosition = {
   vertical?: "top" | "bottom";

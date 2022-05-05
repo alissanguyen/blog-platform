@@ -1,10 +1,9 @@
-import React from "react";
-import { Anchor } from "~/components/Anchor";
-import { Button } from "~/components/Button";
-import { Checkbox } from "~/components/Checkbox";
-import { Input } from "~/components/Input";
-import { Logo } from "~/components/Logo";
-import { useToggle } from "~/hooks";
+import Anchor from "~/components/Anchor/Anchor";
+import Button from "~/components/Button/Button";
+import Checkbox from "~/components/Checkbox/Checkbox";
+import Input from "~/components/Input/Input";
+import Logo from "~/components/Logo/Logo";
+import useToggle from "~/hooks/useToggle";
 
 const RegisterSection = () => {
   const [acceptTerms, toggle] = useToggle(true);

@@ -1,10 +1,13 @@
-import { useRef, useState, ReactChild, ReactChildren, useEffect } from "react";
+import type { ReactChild, ReactChildren} from "react";
+import { useRef, useState, useEffect } from "react";
 import clsx from "clsx";
 import { CaretDown, MagnifyingGlass } from "phosphor-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useDebounce, useOnClickOutside, useToggle } from "~/hooks";
 import NoSearchResult from "~/public/assets/no-search-result.png";
-import { Checkbox } from "../Checkbox";
+import { useDebounce } from "~/hooks/useDebounce";
+import useOnClickOutside from "~/hooks/useOnClickOutside";
+import useToggle from "~/hooks/useToggle";
+import Checkbox from "../Checkbox/Checkbox";
 
 type TSelectProps = {
   children: ReactChild[] | ReactChildren[];
@@ -76,7 +79,7 @@ export const Select = ({
     } else {
       setOptions(children);
     }
-  }, [debouncedSearchTerm]);
+  }, [children, debouncedSearchTerm]);
 
   const handleChange = (value: string | string[]) => {
     if (multiselect) {
