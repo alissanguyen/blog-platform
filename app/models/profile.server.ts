@@ -1,9 +1,20 @@
-// TODO: Should automatically create profile on register new user
-export function createProfile(profileId: string, postId: string) {
-    return  null
+import { prisma } from "~/db.server";
+
+// TODO: Should create profile on register new user
+export function createProfile(userId:string) {
+    // return  prisma.profile.create({
+    //     data: {
+
+    //     }
+    // })
     // TODO: Enable this
 }
 
+export function getProfile(postId: string) {
+    return prisma.profile.findUnique({
+        where: {id: postId}
+    })
+}
 /**
  * User can only EDIT if he/she is authorized to do so
  * @param profileId 

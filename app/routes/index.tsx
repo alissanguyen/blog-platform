@@ -3,7 +3,7 @@ import Header, { links as HeaderStyles } from "~/components/Header/Header";
 import NavBar from "~/components/NavBar/NavBar";
 import FeedSection from "~/sections/FeedSection.tsx/FeedSection";
 import TrendingSection from "~/sections/TrendingSection/TrendingSection";
-import styles from "./index.css";
+import styles from "~/styles/index.css";
 
 export const links: LinksFunction = () => {
   return [...HeaderStyles(), { rel: "stylesheet", href: styles }];

@@ -4,17 +4,22 @@ import type {
   MetaFunction
 } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
+import { Form, useActionData, useSearchParams } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/server-runtime";
-import { Form, Link, useActionData, useSearchParams } from "@remix-run/react";
 import * as React from "react";
+import Anchor from "~/components/Anchor/Anchor";
+import Button from "~/components/Button/Button";
+import Checkbox from "~/components/Checkbox/Checkbox";
+import Input from "~/components/Input/Input";
+import Logo from "~/components/Logo/Logo";
 import { verifyLogin } from "~/models/user.server";
 import { createUserSession, getUserId } from "~/session.server";
 import { validateEmail } from "~/utils";
 
+import useToggle from "~/hooks/useToggle";
 import AnimationLogin, {
   links as AnimationLoginStyles
 } from "~/sections/AuthSection/AnimationLogin";
-import LoginSection from "~/sections/AuthSection/LoginSection";
 
 export const links: LinksFunction = () => {
   return AnimationLoginStyles();
@@ -35,11 +40,11 @@ interface ActionData {
 }
 
 export const action: ActionFunction = async ({ request }) => {
-  const formData = await request.formData();
-  const email = formData.get("email");
-  const password = formData.get("password");
-  const redirectTo = formData.get("redirectTo");
-  const remember = formData.get("remember");
+  const FormData = await request.formData();
+  const email = FormData.get("email");
+  const password = FormData.get("password");
+  const redirectTo = FormData.get("redirectTo");
+  const remember = FormData.get("remember");
 
   if (!validateEmail(email)) {
     return json<ActionData>(
@@ -75,7 +80,7 @@ export const action: ActionFunction = async ({ request }) => {
     request,
     userId: user.id,
     remember: remember === "on" ? true : false,
-    redirectTo: typeof redirectTo === "string" ? redirectTo : "/notes",
+    redirectTo: typeof redirectTo === "string" ? redirectTo : "/",
   });
 };
 
@@ -86,9 +91,9 @@ export const meta: MetaFunction = () => {
 };
 
 export default function LoginPage() {
-
+  const [keepLoggedIn, toggle] = useToggle();
   const [searchParams] = useSearchParams();
-  const redirectTo = searchParams.get("redirectTo") || "/notes";
+  const redirectTo = searchParams.get("redirectTo") || "/";
   const actionData = useActionData() as ActionData;
   const emailRef = React.useRef<HTMLInputElement>(null);
   const passwordRef = React.useRef<HTMLInputElement>(null);
@@ -103,106 +108,81 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen w-screen items-stretch">
-      <LoginSection />
+      <div className="flex w-1/2 flex-col justify-between bg-white p-6">
+        <Logo />
+        <div className="flex flex-1 items-center justify-center">
+          <div className="flex max-w-[350px] flex-col items-stretch">
+            <h1 className="text-lead-1 font-bold">Welcome back</h1>
+            {/* TODO: update the slogan (ex: login now to get...) */}
+            <p className="text-neutral-600">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim,
+              reprehenderit!
+            </p>
+            <Form className="my-6 flex flex-col items-stretch" method="post">
+              <Input ref={emailRef} id="email" variant="text" label="Email" name="email" type="email" aria-invalid={actionData?.errors?.email ? true : undefined}
+                aria-describedby="email-error" required autoFocus={true}
+                autoComplete="email" />
+              {actionData?.errors?.email && (
+                <div className="pt-1 text-red-700" id="email-error">
+                  {actionData.errors.email}
+                </div>
+              )}
+              <Input
+                variant="text"
+                label="Password"
+                name="password"
+                type="password"
+                id="password"
+                ref={passwordRef}
+                autoComplete="current-password"
+                aria-invalid={actionData?.errors?.password ? true : undefined}
+                aria-describedby="password-error"
+                required
+              />
+              {actionData?.errors?.password && (
+                <div className="pt-1 text-red-700" id="password-error">
+                  {actionData.errors.password}
+                </div>
+              )}
+              <div className="mb-4 flex items-center justify-between">
+                <Checkbox
+                  label="Keep me logged in."
+                  checked={keepLoggedIn}
+                  onChange={toggle}
+                />
+                <Anchor className="text-body-sm" to="/reset-password">
+                  Forgot password?
+                </Anchor>
+              </div>
+              <div className="px-4">
+                <Button type="submit" variant="contained" fluid>
+                  Login
+                </Button>
+              </div>
+              <input type="hidden" name="redirectTo" value={redirectTo} />
+            </Form>
+            <div className="mb-3">
+              {/* TODO: update login with other social button */}
+              <div className="flex h-16 items-center justify-center bg-primary-100">
+                Login with other social networks.
+              </div>
+            </div>
+            <div className="text-center">
+              <p className="text-body-sm">
+                Don&apos;t have an account?{" "}
+                <Anchor to="/register">Sign up</Anchor>
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* TODO: update brand name */}
+        <div className="text-body-sm text-neutral-600">
+          &copy; BRANDNAME {new Date().getFullYear()}
+        </div>
+      </div>
       <div className="hidden w-1/2 lg:block">
         <AnimationLogin />
       </div>
     </div>
-
-    // <div className="flex min-h-full flex-col justify-center">
-    //   <div className="mx-auto w-full max-w-md px-8">
-    //     <Form method="post" className="space-y-6">
-    //       <div>
-    //         <label
-    //           htmlFor="email"
-    //           className="block text-sm font-medium text-gray-700"
-    //         >
-    //           Email address
-    //         </label>
-    //         <div className="mt-1">
-    //           <input
-    //             ref={emailRef}
-    //             id="email"
-    //             required
-    //             autoFocus={true}
-    //             name="email"
-    //             type="email"
-    //             autoComplete="email"
-    //             aria-invalid={actionData?.errors?.email ? true : undefined}
-    //             aria-describedby="email-error"
-    //             className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
-    //           />
-    //           {actionData?.errors?.email && (
-    //             <div className="pt-1 text-red-700" id="email-error">
-    //               {actionData.errors.email}
-    //             </div>
-    //           )}
-    //         </div>
-    //       </div>
-
-    //       <div>
-    //         <label
-    //           htmlFor="password"
-    //           className="block text-sm font-medium text-gray-700"
-    //         >
-    //           Password
-    //         </label>
-    //         <div className="mt-1">
-    //           <input
-    //             id="password"
-    //             ref={passwordRef}
-    //             name="password"
-    //             type="password"
-    //             autoComplete="current-password"
-    //             aria-invalid={actionData?.errors?.password ? true : undefined}
-    //             aria-describedby="password-error"
-    //             className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
-    //           />
-    //           {actionData?.errors?.password && (
-    //             <div className="pt-1 text-red-700" id="password-error">
-    //               {actionData.errors.password}
-    //             </div>
-    //           )}
-    //         </div>
-    //       </div>
-
-    //       <input type="hidden" name="redirectTo" value={redirectTo} />
-    //       <button
-    //         type="submit"
-    //         className="w-full rounded bg-blue-500  py-2 px-4 text-white hover:bg-blue-600 focus:bg-blue-400"
-    //       >
-    //         Log in
-    //       </button>
-    //       <div className="flex items-center justify-between">
-    //         <div className="flex items-center">
-    //           <input
-    //             id="remember"
-    //             name="remember"
-    //             type="checkbox"
-    //             className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-    //           />
-    //           <label
-    //             htmlFor="remember"
-    //             className="ml-2 block text-sm text-gray-900"
-    //           >
-    //             Remember me
-    //           </label>
-    //         </div>
-    //         <div className="text-center text-sm text-gray-500">
-    //           Don't have an account?{" "}
-    //           <Link
-    //             className="text-blue-500 underline"
-    //             to={{
-    //               pathname: "/join",
-    //               search: searchParams.toString(),
-    //             }}
-    //           >
-    //             Sign up
-    //           </Link>
-    //         </div>
-    //       </div>
-    //     </Form>
-    //   </div>
-    // </div>
   );
 }

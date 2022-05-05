@@ -8,6 +8,7 @@ export const links: LinksFunction = () => {
   return AnimationRegisterStyles();
 };
 
+// TODO: After completing form to register a new account, redirect to createProfile route
 export default function RegisterPage() {
   return (
     <div className="flex min-h-screen w-screen flex-row-reverse items-stretch">

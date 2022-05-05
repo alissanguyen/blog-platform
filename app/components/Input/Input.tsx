@@ -1,4 +1,4 @@
-import type { ReactNode} from "react";
+import type { ReactNode } from "react";
 import React, { forwardRef, useState } from "react";
 import clsx from "clsx";
 import { Eye, EyeSlash, Question } from "phosphor-react";
@@ -23,14 +23,18 @@ type TInputProps = {
   defaultValue?: string;
   hint?: string;
   description?: string;
+  autoFocus?: boolean;
+  autoComplete?: string;
   error?: string;
   prefix?: ReactNode;
   suffix?: ReactNode;
   disabled?: boolean;
+  required?: boolean;
+  id?: string;
   onChange?: () => void;
   onFocus?:
-    | (() => void)
-    | ((event: React.ChangeEvent<HTMLInputElement>) => void);
+  | (() => void)
+  | ((event: React.ChangeEvent<HTMLInputElement>) => void);
 };
 
 const inputTextSizes = {
@@ -67,7 +71,9 @@ const Input = forwardRef<HTMLInputElement, TInputProps>(
       prefix,
       suffix,
       disabled,
+      required,
       onFocus,
+      id,
       ...rest
     },
     ref
@@ -106,12 +112,12 @@ const Input = forwardRef<HTMLInputElement, TInputProps>(
                   ? "border-red-700 ring-red-100"
                   : "border-red-700 ring-transparent"
                 : isFocus
-                ? clsx(
+                  ? clsx(
                     variant === "text"
                       ? "after:w-full"
                       : "border-primary-300 ring-primary-100"
                   )
-                : "border-neutral-400 ring-transparent"
+                  : "border-neutral-400 ring-transparent"
             )}
           >
             {prefix && prefix}
@@ -133,6 +139,8 @@ const Input = forwardRef<HTMLInputElement, TInputProps>(
               disabled={disabled}
               onFocus={handleFocus}
               onBlur={handleBlur}
+              {...id ? id : null}
+              {...required ? required : null}
               {...rest}
             />
             {hint && (
